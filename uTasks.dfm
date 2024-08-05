@@ -2,7 +2,7 @@ object fTasks: TfTasks
   Left = 0
   Top = 0
   Caption = 'Tasks'
-  ClientHeight = 495
+  ClientHeight = 463
   ClientWidth = 682
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -19,7 +19,6 @@ object fTasks: TfTasks
     Height = 209
     Align = alTop
     TabOrder = 0
-    ExplicitWidth = 582
     object dbgrdTasks: TDBGrid
       Left = 1
       Top = 1
@@ -38,12 +37,12 @@ object fTasks: TfTasks
   end
   object pnlControls: TPanel
     Left = 0
-    Top = 454
+    Top = 422
     Width = 682
     Height = 41
     Align = alBottom
     TabOrder = 1
-    ExplicitWidth = 582
+    ExplicitTop = 454
     object GridPanel1: TGridPanel
       Left = 1
       Top = 1
@@ -76,7 +75,7 @@ object fTasks: TfTasks
           Value = 11.124182344240360000
         end
         item
-          Value = 11.061492537001570000
+          Value = 11.061492537001560000
         end>
       ControlCollection = <
         item
@@ -129,7 +128,6 @@ object fTasks: TfTasks
           Value = 100.000000000000000000
         end>
       TabOrder = 0
-      ExplicitWidth = 580
       object btnAdd: TButton
         AlignWithMargins = True
         Left = 4
@@ -139,7 +137,6 @@ object fTasks: TfTasks
         Action = DatasetInsert1
         Align = alClient
         TabOrder = 0
-        ExplicitWidth = 72
       end
       object btnEdit: TButton
         AlignWithMargins = True
@@ -150,8 +147,6 @@ object fTasks: TfTasks
         Action = DatasetEdit1
         Align = alClient
         TabOrder = 1
-        ExplicitLeft = 82
-        ExplicitWidth = 71
       end
       object btnDelete: TButton
         AlignWithMargins = True
@@ -162,8 +157,6 @@ object fTasks: TfTasks
         Action = DatasetDelete1
         Align = alClient
         TabOrder = 2
-        ExplicitLeft = 159
-        ExplicitWidth = 71
       end
       object btnCancel: TButton
         AlignWithMargins = True
@@ -174,8 +167,6 @@ object fTasks: TfTasks
         Action = DatasetCancel1
         Align = alClient
         TabOrder = 3
-        ExplicitLeft = 236
-        ExplicitWidth = 70
       end
       object btnSave: TButton
         AlignWithMargins = True
@@ -186,8 +177,6 @@ object fTasks: TfTasks
         Action = DatasetPost1
         Align = alClient
         TabOrder = 4
-        ExplicitLeft = 312
-        ExplicitWidth = 67
       end
       object btnStart: TButton
         AlignWithMargins = True
@@ -199,8 +188,6 @@ object fTasks: TfTasks
         Caption = '&Start'
         TabOrder = 5
         OnClick = btnStartClick
-        ExplicitLeft = 385
-        ExplicitWidth = 63
       end
       object btnFinish: TButton
         AlignWithMargins = True
@@ -212,8 +199,6 @@ object fTasks: TfTasks
         Caption = '&Finish'
         TabOrder = 6
         OnClick = btnFinishClick
-        ExplicitLeft = 454
-        ExplicitWidth = 60
       end
       object btnBack: TButton
         AlignWithMargins = True
@@ -226,8 +211,6 @@ object fTasks: TfTasks
         Caption = 'C&lose'
         TabOrder = 7
         OnClick = WindowClose1Execute
-        ExplicitLeft = 520
-        ExplicitWidth = 56
       end
       object btnCopy: TButton
         AlignWithMargins = True
@@ -239,10 +222,6 @@ object fTasks: TfTasks
         Caption = 'Copy'
         TabOrder = 8
         OnClick = btnCopyClick
-        ExplicitLeft = 576
-        ExplicitTop = 16
-        ExplicitWidth = 75
-        ExplicitHeight = 25
       end
     end
   end
@@ -250,10 +229,10 @@ object fTasks: TfTasks
     Left = 0
     Top = 209
     Width = 682
-    Height = 245
+    Height = 213
     Align = alClient
     TabOrder = 2
-    ExplicitWidth = 582
+    ExplicitHeight = 245
     object lblTtile: TLabel
       AlignWithMargins = True
       Left = 4
@@ -263,8 +242,6 @@ object fTasks: TfTasks
       Align = alTop
       Caption = 'title'
       FocusControl = dbedttitle
-      ExplicitLeft = 32
-      ExplicitTop = 16
       ExplicitWidth = 20
     end
     object lblDescription: TLabel
@@ -276,8 +253,7 @@ object fTasks: TfTasks
       Align = alTop
       Caption = 'description'
       FocusControl = dbmmodescription
-      ExplicitLeft = -4
-      ExplicitTop = 110
+      ExplicitWidth = 59
     end
     object lbl: TLabel
       AlignWithMargins = True
@@ -288,8 +264,6 @@ object fTasks: TfTasks
       Align = alTop
       Caption = 'due_date'
       FocusControl = dbedtdue_date
-      ExplicitLeft = 32
-      ExplicitTop = 196
       ExplicitWidth = 48
     end
     object lblDayId: TLabel
@@ -310,22 +284,18 @@ object fTasks: TfTasks
       DataField = 'title'
       DataSource = dsTasks
       TabOrder = 0
-      ExplicitLeft = 57
-      ExplicitTop = 28
-      ExplicitWidth = 336
     end
     object dbmmodescription: TDBMemo
       AlignWithMargins = True
       Left = 4
       Top = 125
       Width = 674
-      Height = 116
+      Height = 84
       Align = alClient
       DataField = 'description'
       DataSource = dsTasks
       TabOrder = 1
-      ExplicitTop = 63
-      ExplicitHeight = 90
+      ExplicitHeight = 116
     end
     object dbedtdue_date: TDBEdit
       AlignWithMargins = True
@@ -337,9 +307,6 @@ object fTasks: TfTasks
       DataField = 'due_date'
       DataSource = dsTasks
       TabOrder = 2
-      ExplicitLeft = 56
-      ExplicitTop = 216
-      ExplicitWidth = 184
     end
     object edtDayId: TEdit
       Left = 408

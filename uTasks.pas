@@ -153,6 +153,10 @@ var
 begin
   if qryTasks.RecordCount = 0 then
     exit;
+  if not qryTasksfinished_at.IsNull then
+    if MessageDlg('The task has been finished before!'+#10
+    +' Are you sure you want to change the finish time?', TMsgDlgType.mtWarning, [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo], 0) <> mrYes then
+      Exit;
   sSqlCmd := 'UPDATE tblTasks SET finished_at = GETDATE() WHERE id =:Task_Id ';
   with DataModule1 do
   begin
@@ -172,7 +176,8 @@ begin
     exit;
   if qryTasksstarted_at.AsString <> '' then
   begin
-    if MessageDlg('The task is running! Are you sure you want to restart?', TMsgDlgType.mtWarning, [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo], 0) <> mrYes then
+    if MessageDlg('The task has been started before!'+#10
+    +' Are you sure you want to restart?', TMsgDlgType.mtWarning, [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo], 0) <> mrYes then
     begin
       Exit;
     end;

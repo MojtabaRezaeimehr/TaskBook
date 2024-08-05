@@ -44,12 +44,6 @@ type
     dbmmodescription: TDBMemo;
     lbl: TLabel;
     dbedtdue_date: TDBEdit;
-    lbl1: TLabel;
-    dbedtcreated_at: TDBEdit;
-    lbl2: TLabel;
-    dbedtstarted_at: TDBEdit;
-    lbl3: TLabel;
-    dbedtfinished_at: TDBEdit;
     actmgr1: TActionManager;
     DatasetInsert1: TDataSetInsert;
     DatasetDelete1: TDataSetDelete;
@@ -60,8 +54,7 @@ type
     WindowClose1: TWindowClose;
     edtDayId: TEdit;
     lblDayId: TLabel;
-    lbl4: TLabel;
-    dbedtUpdated_at: TDBEdit;
+    btnCopy: TButton;
     procedure btnFinishClick(Sender: TObject);
     procedure WindowClose1Execute(Sender: TObject);
     procedure btnStartClick(Sender: TObject);
@@ -70,6 +63,7 @@ type
     procedure qryTasksAfterInsert(DataSet: TDataSet);
     procedure qryTasksBeforeInsert(DataSet: TDataSet);
     procedure qryTasksBeforePost(DataSet: TDataSet);
+    procedure btnCopyClick(Sender: TObject);
   private
     procedure RefreshGrid;
     procedure SetControlsEnabledStatus(enabled: Boolean);
@@ -84,9 +78,74 @@ var
 implementation
 
 uses
-  uDataModule;
+  uDataModule, uDaySelector;
 
 {$R *.dfm}
+
+procedure TfTasks.btnCopyClick(Sender: TObject);
+var
+  fdaysSelector: TfDaysSelector;
+  sDay_id,sTask_id,sCmd: string;
+begin
+    fdaysSelector := TfDaysSelector.Create(self);
+    with fdaysSelector do
+  begin
+    if qryTasks.RecordCount = 0 then
+      Exit;
+    with qryDaysSelector do
+    begin
+      Parameters.ParamByName('person_id').Value := UserId;
+      Close;
+      Open;
+    end;
+    ShowModal;
+    if ModalResult <> mrOk then
+      exit;
+    if qryDaysSelector.RecordCount = 0 then
+      exit;
+    sDay_id := IntToStr(qryDaysSelectorid.Value);
+//    if sDay_id = qryTasks.FieldByName('dya_id').Value then
+//    begin
+//    MessageDlg('Can not copy a task to its day !',TMsgDlgType.mtError,[TMsgDlgBtn.mbClose],0);
+//    end;
+    sTask_id:= qryTasks.FieldByName('id').AsString;
+    sCmd:= 'INSERT INTO [dbo].[tblTasks] ' + #10
+     + '           ([day_id] ' + #10
+     + '           ,[title] ' + #10
+     + '           ,[description] ' + #10
+     + '           ,[created_at] ' + #10
+     + '           ,[updated_at] ' + #10
+     + '           ,[started_at] ' + #10
+     + '           ,[finished_at] ' + #10
+     + '           ,[due_date] ' + #10
+     + '           ,[is_active]) ' + #10
+     + 'SELECT :day_id ' + #10
+     + '           ,[title] ' + #10
+     + '           ,[description] ' + #10
+     + '           ,GETDATE() ' + #10
+     + '           ,NULL ' + #10
+     + '           ,NULL ' + #10
+     + '           ,NULL ' + #10
+     + '           ,[due_date] ' + #10
+     + '           ,[is_active] ' + #10
+     + 'FROM tblTasks AS tt ' + #10
+     + 'WHERE id=:task_id';
+    with DataModule1.cmd1 do
+    begin
+      try
+        CommandText := sCmd;
+        Parameters.ParamByName('task_id').Value := sTask_id;
+        Parameters.ParamByName('day_id').Value := sDay_id;
+        Execute;
+        MessageDlg('The selected task copied successfully!', TMsgDlgType.mtConfirmation, [TMsgDlgBtn.mbClose], 0);
+      except
+        on E: Exception do
+          MessageDlg(e.Message, TMsgDlgType.mtError, [TMsgDlgBtn.mbClose], 0);
+      end;
+    end;
+    Free;
+  end;
+end;
 
 procedure TfTasks.btnFinishClick(Sender: TObject);
 var
@@ -94,6 +153,10 @@ var
 begin
   if qryTasks.RecordCount = 0 then
     exit;
+  if not qryTasksfinished_at.IsNull then
+    if MessageDlg('The task has been finished before!'+#10
+    +' Are you sure you want to change the finish time?', TMsgDlgType.mtWarning, [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo], 0) <> mrYes then
+      Exit;
   sSqlCmd := 'UPDATE tblTasks SET finished_at = GETDATE() WHERE id =:Task_Id ';
   with DataModule1 do
   begin
@@ -113,7 +176,8 @@ begin
     exit;
   if qryTasksstarted_at.AsString <> '' then
   begin
-    if MessageDlg('The task is running! Are you sure you want to restart?', TMsgDlgType.mtWarning, [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo], 0) <> mrYes then
+    if MessageDlg('The task is running!'+#10
+    +' Are you sure you want to restart?', TMsgDlgType.mtWarning, [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo], 0) <> mrYes then
     begin
       Exit;
     end;
@@ -186,7 +250,6 @@ begin
       cmd1.Parameters.ParamByName('Task_Id').Value := qryTasks.FieldByName('id').AsString;
       cmd1.Execute;
     end;
-    RefreshGrid;
   end
 //  else if qryTasks.State = dsInsert then
 //  begin
