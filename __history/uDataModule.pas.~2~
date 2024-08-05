@@ -1,0 +1,38 @@
+unit uDataModule;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, Data.DB, Data.Win.ADODB;
+
+type
+  TDataModule1 = class(TDataModule)
+    MainConnection: TADOConnection;
+    qry1: TADOQuery;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure ExecuteSql(strSql:string);
+  end;
+
+var
+  DataModule1: TDataModule1;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+procedure TDataModule1.ExecuteSql(strSql: string);
+begin
+  with qry1 do
+  begin
+    sql.Clear;
+    sql.Add(strSql);
+    ExecSQL;
+  end;
+end;
+
+end.

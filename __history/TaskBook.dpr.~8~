@@ -1,0 +1,27 @@
+program TaskBook;
+
+uses
+  Vcl.Dialogs,
+  Vcl.Forms,
+  uLogin in 'uLogin.pas' {fLogin},
+  uMain in 'uMain.pas' {fMain},
+  uDataModule in 'uDataModule.pas' {DataModule1: TDataModule},
+  uTasks in 'uTasks.pas' {fTasks},
+  uDaySelector in 'uDaySelector.pas' {fDaysSelector};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TDataModule1, DataModule1);
+  Application.CreateForm(TfLogin, fLogin);
+  Application.CreateForm(TfDaysSelector, fDaysSelector);
+  fLogin.ShowModal;
+//  if fLogin.ModalResult =  then
+//  begin
+//    Application.CreateForm(TfMain,fMain);
+//    Application.Run;
+//  end;
+end.
+

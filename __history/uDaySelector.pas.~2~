@@ -1,0 +1,41 @@
+unit uDaySelector;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Data.Win.ADODB, Vcl.Grids,
+  Vcl.DBGrids, Vcl.StdCtrls, Vcl.ExtCtrls;
+
+type
+  TfDaysSelector = class(TForm)
+    grpDaysList: TGroupBox;
+    dbgrdDays: TDBGrid;
+    qryDays: TADOQuery;
+    dsDays: TDataSource;
+    qryDaysid: TAutoIncField;
+    qryDaysperson_id: TIntegerField;
+    qryDaysworking_date: TWideStringField;
+    qryDaysstarted_at: TWideStringField;
+    qryDaysfinished_at: TWideStringField;
+    qryDaysdescriptions: TWideMemoField;
+    grdpnlBtns: TGridPanel;
+    btnSelect: TButton;
+    btnCancel: TButton;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  fDaysSelector: TfDaysSelector;
+
+implementation
+
+uses
+  uDataModule;
+
+{$R *.dfm}
+
+end.

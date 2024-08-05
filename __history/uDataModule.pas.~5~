@@ -1,0 +1,70 @@
+unit uDataModule;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, Data.DB, Data.Win.ADODB;
+
+type
+  TDataModule1 = class(TDataModule)
+    MainConnection: TADOConnection;
+    qry1: TADOQuery;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure ExecuteSql(strSql:string);
+    function GetUserId(sUsername:string;sPassword:string;bReturnTop:Boolean):Integer;
+  end;
+
+var
+  DataModule1: TDataModule1;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+procedure TDataModule1.ExecuteSql(strSql: string);
+begin
+  with qry1 do
+  begin
+    sql.Clear;
+    sql.Add(strSql);
+    ExecSQL;
+  end;
+end;
+
+
+function TDataModule1.GetUserId(sUsername, sPassword: string;
+  bReturnTop: Boolean): Integer;
+var
+sQry:string;
+iResult:Integer;
+begin
+  if bReturnTop  then
+  begin
+   sQry:='DECLARE @id INT SELECT TOP(1) @id=id FROM tblPersonel ORDER BY id SELECT @id AS Result';
+   ExecuteSql(sQry);
+  end
+  else
+  begin
+    sQry:= 'DECLARE @id INT SELECT TOP(1) @id=id FROM tblPersonel WHERE Username=:userName and Password =:password ORDER BY id SELECT @id AS Result';
+    with qry1 do
+    begin
+      sql.Clear;
+      sql.Add(sQry);
+      Parameters.ParamByName('username').Value:=sUsername;
+      Parameters.ParamByName('password').Value:=sPassword;
+      ExecSQL;
+    end;
+  end;
+  if qry1.FieldByName('Result').Value = '' then
+    iResult:=0
+  else
+    iResult:=qry1.FieldByName('Result').Value;
+  Result:=iResult;
+end;
+
+end.

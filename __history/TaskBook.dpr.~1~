@@ -1,0 +1,14 @@
+program TaskBook;
+
+uses
+  Vcl.Forms,
+  uLogin in 'uLogin.pas' {fLogin};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TfLogin, fLogin);
+  Application.Run;
+end.

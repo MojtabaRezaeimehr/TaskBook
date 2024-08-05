@@ -1,0 +1,29 @@
+unit uDaySelector;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Data.Win.ADODB, Vcl.Grids,
+  Vcl.DBGrids, Vcl.StdCtrls;
+
+type
+  TfDaysSelector = class(TForm)
+    grpDaysList: TGroupBox;
+    dbgrdDays: TDBGrid;
+    qryDays: TADOQuery;
+    dsDays: TDataSource;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  fDaysSelector: TfDaysSelector;
+
+implementation
+
+{$R *.dfm}
+
+end.

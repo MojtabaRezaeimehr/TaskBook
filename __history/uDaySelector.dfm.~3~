@@ -1,0 +1,163 @@
+object fDaysSelector: TfDaysSelector
+  Left = 0
+  Top = 0
+  BorderStyle = bsDialog
+  Caption = 'Days'
+  ClientHeight = 441
+  ClientWidth = 272
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  Position = poMainFormCenter
+  TextHeight = 15
+  object grpDaysList: TGroupBox
+    Left = 0
+    Top = 0
+    Width = 272
+    Height = 400
+    Align = alClient
+    Caption = 'Days List'
+    TabOrder = 0
+    ExplicitLeft = 72
+    ExplicitTop = 32
+    ExplicitWidth = 185
+    ExplicitHeight = 105
+    object dbgrdDays: TDBGrid
+      AlignWithMargins = True
+      Left = 5
+      Top = 20
+      Width = 262
+      Height = 375
+      Align = alClient
+      DataSource = dsDays
+      TabOrder = 0
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -12
+      TitleFont.Name = 'Segoe UI'
+      TitleFont.Style = []
+    end
+  end
+  object grdpnlBtns: TGridPanel
+    Left = 0
+    Top = 400
+    Width = 272
+    Height = 41
+    Align = alBottom
+    ColumnCollection = <
+      item
+        Value = 50.000000000000000000
+      end
+      item
+        Value = 50.000000000000000000
+      end>
+    ControlCollection = <
+      item
+        Column = 0
+        Control = btnSelect
+        Row = 0
+      end
+      item
+        Column = 1
+        Control = btnCancel
+        Row = 0
+      end>
+    RowCollection = <
+      item
+        Value = 100.000000000000000000
+      end>
+    TabOrder = 1
+    ExplicitLeft = 40
+    ExplicitTop = 352
+    ExplicitWidth = 185
+    object btnSelect: TButton
+      AlignWithMargins = True
+      Left = 4
+      Top = 4
+      Width = 129
+      Height = 33
+      Align = alClient
+      Caption = 'Select'
+      ModalResult = 1
+      TabOrder = 0
+      ExplicitLeft = 64
+      ExplicitTop = 24
+      ExplicitWidth = 75
+      ExplicitHeight = 25
+    end
+    object btnCancel: TButton
+      AlignWithMargins = True
+      Left = 139
+      Top = 4
+      Width = 129
+      Height = 33
+      Align = alClient
+      Caption = 'Cancel'
+      ModalResult = 2
+      TabOrder = 1
+      ExplicitLeft = 200
+      ExplicitTop = 16
+      ExplicitWidth = 75
+      ExplicitHeight = 25
+    end
+  end
+  object qryDays: TADOQuery
+    Active = True
+    Connection = DataModule1.MainConnection
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT id,'
+      '       td.person_id,'
+      
+        '       FORMAT(td.working_date, '#39'yyyy/MM/dd'#39', '#39'fa'#39') AS working_da' +
+        'te,'
+      '       FORMAT(td.started_at, '#39'hh:mm:ss'#39', '#39'fa'#39') AS started_at,'
+      '       FORMAT(td.finished_at, '#39'HH:mm:ss'#39', '#39'fa'#39') AS finished_at,'
+      '       td.descriptions'
+      'FROM   tblDays AS td'
+      'WHERE  td.person_id = 1')
+    Left = 120
+    Top = 208
+    object qryDaysid: TAutoIncField
+      FieldName = 'id'
+      ReadOnly = True
+      Visible = False
+    end
+    object qryDaysperson_id: TIntegerField
+      FieldName = 'person_id'
+      Visible = False
+    end
+    object qryDaysworking_date: TWideStringField
+      DisplayWidth = 15
+      FieldName = 'working_date'
+      ReadOnly = True
+      Size = 4000
+    end
+    object qryDaysstarted_at: TWideStringField
+      DisplayWidth = 10
+      FieldName = 'started_at'
+      ReadOnly = True
+      Size = 4000
+    end
+    object qryDaysfinished_at: TWideStringField
+      DisplayWidth = 10
+      FieldName = 'finished_at'
+      ReadOnly = True
+      Size = 4000
+    end
+    object qryDaysdescriptions: TWideMemoField
+      FieldName = 'descriptions'
+      Visible = False
+      BlobType = ftWideMemo
+    end
+  end
+  object dsDays: TDataSource
+    DataSet = qryDays
+    Left = 200
+    Top = 209
+  end
+end
