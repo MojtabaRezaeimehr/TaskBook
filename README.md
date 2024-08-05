@@ -1,1 +1,1 @@
-Note book app for win like a note book on work
+Note book app for win like a manual note book on work to handle tasks
