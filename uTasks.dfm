@@ -42,7 +42,6 @@ object fTasks: TfTasks
     Height = 41
     Align = alBottom
     TabOrder = 1
-    ExplicitTop = 454
     object GridPanel1: TGridPanel
       Left = 1
       Top = 1
@@ -232,7 +231,6 @@ object fTasks: TfTasks
     Height = 213
     Align = alClient
     TabOrder = 2
-    ExplicitHeight = 245
     object lblTtile: TLabel
       AlignWithMargins = True
       Left = 4
@@ -295,7 +293,6 @@ object fTasks: TfTasks
       DataField = 'description'
       DataSource = dsTasks
       TabOrder = 1
-      ExplicitHeight = 116
     end
     object dbedtdue_date: TDBEdit
       AlignWithMargins = True
@@ -307,6 +304,7 @@ object fTasks: TfTasks
       DataField = 'due_date'
       DataSource = dsTasks
       TabOrder = 2
+      OnDblClick = dbedtdue_dateDblClick
     end
     object edtDayId: TEdit
       Left = 408

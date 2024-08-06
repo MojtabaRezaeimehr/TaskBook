@@ -64,6 +64,7 @@ type
     procedure qryTasksBeforeInsert(DataSet: TDataSet);
     procedure qryTasksBeforePost(DataSet: TDataSet);
     procedure btnCopyClick(Sender: TObject);
+    procedure dbedtdue_dateDblClick(Sender: TObject);
   private
     procedure RefreshGrid;
     procedure SetControlsEnabledStatus(enabled: Boolean);
@@ -196,6 +197,15 @@ procedure TfTasks.DatasetDelete1Execute(Sender: TObject);
 begin
   if MessageDlg('Are you sure you want to delete?', TMsgDlgType.mtConfirmation, [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo], 0) = mrYes then
     qryTasks.Delete;
+end;
+
+procedure TfTasks.dbedtdue_dateDblClick(Sender: TObject);
+var sQry,sCurrentDate:string;
+begin
+  sQry:= 'SELECT FORMAT(GETDATE() ,''yyyy/MM/dd'' ,''fa'') AS today_fa';
+  DataModule1.ExecuteSql(sQry);
+  sCurrentDate:= DataModule1.qry1.FieldByName('today_fa').Value;
+  dbedtdue_date.Text:=sCurrentDate;
 end;
 
 procedure TfTasks.dsTasksStateChange(Sender: TObject);
