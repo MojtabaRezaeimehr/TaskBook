@@ -33,6 +33,7 @@ object fTasks: TfTasks
       TitleFont.Height = -12
       TitleFont.Name = 'Segoe UI'
       TitleFont.Style = []
+      OnDblClick = dbgrdTasksDblClick
     end
   end
   object pnlControls: TPanel

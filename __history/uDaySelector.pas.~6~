@@ -41,7 +41,8 @@ uses
 
 procedure TfDaysSelector.dbgrdDaysDblClick(Sender: TObject);
 begin
-  Self.ModalResult:=mrOk;
+  ModalResult:=mrOk;
+  self.Close;
 end;
 
 end.

@@ -65,6 +65,7 @@ type
     procedure qryTasksBeforePost(DataSet: TDataSet);
     procedure btnCopyClick(Sender: TObject);
     procedure dbedtdue_dateDblClick(Sender: TObject);
+    procedure dbgrdTasksDblClick(Sender: TObject);
   private
     procedure RefreshGrid;
     procedure SetControlsEnabledStatus(enabled: Boolean);
@@ -100,7 +101,7 @@ begin
       Open;
     end;
     ShowModal;
-    if ModalResult <> mrOk then
+     if ModalResult <> mrOk then
       exit;
     if qryDaysSelector.RecordCount = 0 then
       exit;
@@ -208,6 +209,12 @@ begin
   dbedtdue_date.Text:=sCurrentDate;
 end;
 
+procedure TfTasks.dbgrdTasksDblClick(Sender: TObject);
+begin
+  qryTasks.Edit;
+  dbmmodescription.SetFocus;
+end;
+
 procedure TfTasks.dsTasksStateChange(Sender: TObject);
 begin
   if qryTasks.State in [dsEdit, dsInsert] then
@@ -232,6 +239,9 @@ begin
   dbedttitle.Enabled := enabled;
   dbmmodescription.Enabled := enabled;
   dbedtdue_date.Enabled := enabled;
+  btnStart.Enabled := not enabled;
+  btnFinish.Enabled := not enabled;
+  btnCopy.Enabled := not enabled;
 end;
 
 procedure TfTasks.qryTasksAfterInsert(DataSet: TDataSet);
