@@ -2,7 +2,7 @@ object fTasks: TfTasks
   Left = 0
   Top = 0
   Caption = 'Tasks'
-  ClientHeight = 495
+  ClientHeight = 463
   ClientWidth = 682
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -19,7 +19,6 @@ object fTasks: TfTasks
     Height = 209
     Align = alTop
     TabOrder = 0
-    ExplicitWidth = 582
     object dbgrdTasks: TDBGrid
       Left = 1
       Top = 1
@@ -34,16 +33,16 @@ object fTasks: TfTasks
       TitleFont.Height = -12
       TitleFont.Name = 'Segoe UI'
       TitleFont.Style = []
+      OnDblClick = dbgrdTasksDblClick
     end
   end
   object pnlControls: TPanel
     Left = 0
-    Top = 454
+    Top = 422
     Width = 682
     Height = 41
     Align = alBottom
     TabOrder = 1
-    ExplicitWidth = 582
     object GridPanel1: TGridPanel
       Left = 1
       Top = 1
@@ -76,7 +75,7 @@ object fTasks: TfTasks
           Value = 11.124182344240360000
         end
         item
-          Value = 11.061492537001570000
+          Value = 11.061492537001560000
         end>
       ControlCollection = <
         item
@@ -129,7 +128,6 @@ object fTasks: TfTasks
           Value = 100.000000000000000000
         end>
       TabOrder = 0
-      ExplicitWidth = 580
       object btnAdd: TButton
         AlignWithMargins = True
         Left = 4
@@ -139,7 +137,6 @@ object fTasks: TfTasks
         Action = DatasetInsert1
         Align = alClient
         TabOrder = 0
-        ExplicitWidth = 72
       end
       object btnEdit: TButton
         AlignWithMargins = True
@@ -150,8 +147,6 @@ object fTasks: TfTasks
         Action = DatasetEdit1
         Align = alClient
         TabOrder = 1
-        ExplicitLeft = 82
-        ExplicitWidth = 71
       end
       object btnDelete: TButton
         AlignWithMargins = True
@@ -162,8 +157,6 @@ object fTasks: TfTasks
         Action = DatasetDelete1
         Align = alClient
         TabOrder = 2
-        ExplicitLeft = 159
-        ExplicitWidth = 71
       end
       object btnCancel: TButton
         AlignWithMargins = True
@@ -174,8 +167,6 @@ object fTasks: TfTasks
         Action = DatasetCancel1
         Align = alClient
         TabOrder = 3
-        ExplicitLeft = 236
-        ExplicitWidth = 70
       end
       object btnSave: TButton
         AlignWithMargins = True
@@ -186,8 +177,6 @@ object fTasks: TfTasks
         Action = DatasetPost1
         Align = alClient
         TabOrder = 4
-        ExplicitLeft = 312
-        ExplicitWidth = 67
       end
       object btnStart: TButton
         AlignWithMargins = True
@@ -199,8 +188,6 @@ object fTasks: TfTasks
         Caption = '&Start'
         TabOrder = 5
         OnClick = btnStartClick
-        ExplicitLeft = 385
-        ExplicitWidth = 63
       end
       object btnFinish: TButton
         AlignWithMargins = True
@@ -212,8 +199,6 @@ object fTasks: TfTasks
         Caption = '&Finish'
         TabOrder = 6
         OnClick = btnFinishClick
-        ExplicitLeft = 454
-        ExplicitWidth = 60
       end
       object btnBack: TButton
         AlignWithMargins = True
@@ -226,8 +211,6 @@ object fTasks: TfTasks
         Caption = 'C&lose'
         TabOrder = 7
         OnClick = WindowClose1Execute
-        ExplicitLeft = 520
-        ExplicitWidth = 56
       end
       object btnCopy: TButton
         AlignWithMargins = True
@@ -239,10 +222,6 @@ object fTasks: TfTasks
         Caption = 'Copy'
         TabOrder = 8
         OnClick = btnCopyClick
-        ExplicitLeft = 576
-        ExplicitTop = 16
-        ExplicitWidth = 75
-        ExplicitHeight = 25
       end
     end
   end
@@ -250,57 +229,41 @@ object fTasks: TfTasks
     Left = 0
     Top = 209
     Width = 682
-    Height = 245
+    Height = 213
     Align = alClient
     TabOrder = 2
-    ExplicitWidth = 582
     object lblTtile: TLabel
-      Left = 32
-      Top = 16
-      Width = 20
+      AlignWithMargins = True
+      Left = 4
+      Top = 4
+      Width = 674
       Height = 15
+      Align = alTop
       Caption = 'title'
       FocusControl = dbedttitle
+      ExplicitWidth = 20
     end
     object lblDescription: TLabel
-      Left = 32
-      Top = 64
-      Width = 59
+      AlignWithMargins = True
+      Left = 4
+      Top = 104
+      Width = 674
       Height = 15
+      Align = alTop
       Caption = 'description'
       FocusControl = dbmmodescription
+      ExplicitWidth = 59
     end
     object lbl: TLabel
-      Left = 32
-      Top = 196
-      Width = 48
+      AlignWithMargins = True
+      Left = 4
+      Top = 54
+      Width = 674
       Height = 15
+      Align = alTop
       Caption = 'due_date'
       FocusControl = dbedtdue_date
-    end
-    object lbl1: TLabel
-      Left = 232
-      Top = 197
-      Width = 54
-      Height = 15
-      Caption = 'created_at'
-      FocusControl = dbedtcreated_at
-    end
-    object lbl2: TLabel
-      Left = 408
-      Top = 8
-      Width = 51
-      Height = 15
-      Caption = 'started_at'
-      FocusControl = dbedtstarted_at
-    end
-    object lbl3: TLabel
-      Left = 408
-      Top = 64
-      Width = 57
-      Height = 15
-      Caption = 'finished_at'
-      FocusControl = dbedtfinished_at
+      ExplicitWidth = 48
     end
     object lblDayId: TLabel
       Left = 409
@@ -308,71 +271,41 @@ object fTasks: TfTasks
       Width = 30
       Height = 15
       Caption = 'DayId'
-      FocusControl = dbedtfinished_at
-    end
-    object lbl4: TLabel
-      Left = 379
-      Top = 196
-      Width = 59
-      Height = 15
-      Caption = 'updated_at'
+      Visible = False
     end
     object dbedttitle: TDBEdit
-      Left = 57
-      Top = 28
-      Width = 336
+      AlignWithMargins = True
+      Left = 4
+      Top = 25
+      Width = 674
       Height = 23
+      Align = alTop
       DataField = 'title'
       DataSource = dsTasks
       TabOrder = 0
     end
     object dbmmodescription: TDBMemo
-      Left = 56
-      Top = 80
-      Width = 337
-      Height = 113
+      AlignWithMargins = True
+      Left = 4
+      Top = 125
+      Width = 674
+      Height = 84
+      Align = alClient
       DataField = 'description'
       DataSource = dsTasks
       TabOrder = 1
     end
     object dbedtdue_date: TDBEdit
-      Left = 56
-      Top = 216
-      Width = 184
+      AlignWithMargins = True
+      Left = 4
+      Top = 75
+      Width = 674
       Height = 23
+      Align = alTop
       DataField = 'due_date'
       DataSource = dsTasks
       TabOrder = 2
-    end
-    object dbedtcreated_at: TDBEdit
-      Left = 248
-      Top = 216
-      Width = 129
-      Height = 23
-      DataField = 'created_at'
-      DataSource = dsTasks
-      Enabled = False
-      TabOrder = 3
-    end
-    object dbedtstarted_at: TDBEdit
-      Left = 407
-      Top = 28
-      Width = 106
-      Height = 23
-      DataField = 'started_at'
-      DataSource = dsTasks
-      Enabled = False
-      TabOrder = 4
-    end
-    object dbedtfinished_at: TDBEdit
-      Left = 408
-      Top = 80
-      Width = 105
-      Height = 23
-      DataField = 'finished_at'
-      DataSource = dsTasks
-      Enabled = False
-      TabOrder = 5
+      OnDblClick = dbedtdue_dateDblClick
     end
     object edtDayId: TEdit
       Left = 408
@@ -380,18 +313,9 @@ object fTasks: TfTasks
       Width = 105
       Height = 23
       ReadOnly = True
-      TabOrder = 6
+      TabOrder = 3
       Text = 'edtDayId'
-    end
-    object dbedtUpdated_at: TDBEdit
-      Left = 384
-      Top = 216
-      Width = 129
-      Height = 23
-      DataField = 'updated_at'
-      DataSource = dsTasks
-      Enabled = False
-      TabOrder = 7
+      Visible = False
     end
   end
   object qryTasks: TADOQuery
@@ -433,6 +357,7 @@ object fTasks: TfTasks
       Visible = False
     end
     object qryTaskstitle: TWideStringField
+      DisplayLabel = 'Title'
       DisplayWidth = 50
       FieldName = 'title'
       Size = 128
@@ -443,6 +368,7 @@ object fTasks: TfTasks
       BlobType = ftWideMemo
     end
     object qryTasksdue_date: TStringField
+      DisplayLabel = 'Due Date'
       DisplayWidth = 12
       FieldName = 'due_date'
       Size = 10
@@ -452,18 +378,21 @@ object fTasks: TfTasks
       Visible = False
     end
     object qryTasksstarted_at: TWideStringField
+      DisplayLabel = 'Started at'
       DisplayWidth = 10
       FieldName = 'started_at'
       ReadOnly = True
       Size = 4000
     end
     object qryTasksfinished_at: TWideStringField
+      DisplayLabel = 'Finished at'
       DisplayWidth = 10
       FieldName = 'finished_at'
       ReadOnly = True
       Size = 4000
     end
     object qryTaskscreated_at: TWideStringField
+      DisplayLabel = 'Created at'
       DisplayWidth = 20
       FieldName = 'created_at'
       ReadOnly = True

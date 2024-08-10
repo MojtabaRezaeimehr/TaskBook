@@ -64,6 +64,7 @@ type
     btnTimeSheetOut: TButton;
     btnDeleteTimeSheet: TButton;
     actDeleteTimeSheet: TDataSetDelete;
+    qryDaysday_name: TWideStringField;
     procedure btnExitClick(Sender: TObject);
     procedure dbgrdDaysDblClick(Sender: TObject);
     procedure btnAddClick(Sender: TObject);

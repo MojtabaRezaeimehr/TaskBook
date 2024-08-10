@@ -16,24 +16,21 @@ File_13=TSourceModule,'E:\Mojtaba\Programing\Delphi\ArshamTTAC\AMF_TTAC\forms&un
 
 [Modules]
 Module0=E:\Mojtaba\Programing\Delphi\TaskBook\uTasks.pas
-Module1=E:\Mojtaba\Programing\Delphi\TaskBook\uDaySelector.pas
-Module2=E:\Mojtaba\Programing\Delphi\TaskBook\uMain.pas
-Module3=E:\Mojtaba\Programing\Delphi\TaskBook\uLogin.pas
-Module4=E:\Mojtaba\Programing\Delphi\TaskBook\uDataModule.pas
-Module5=E:\Mojtaba\Programing\Delphi\TaskBook\TaskBook.dproj
+Module1=E:\Mojtaba\Programing\Delphi\TaskBook\uMain.pas
+Module2=E:\Mojtaba\Programing\Delphi\TaskBook\uDaySelector.pas
+Module3=E:\Mojtaba\Programing\Delphi\TaskBook\uDataModule.pas
+Module4=E:\Mojtaba\Programing\Delphi\TaskBook\TaskBook.dproj
+Module5=E:\Mojtaba\Programing\Delphi\TaskBook\uLogin.pas
 Count=6
 EditWindowCount=1
 
 [E:\Mojtaba\Programing\Delphi\TaskBook\uTasks.pas]
 ModuleType=TSourceModule
 
-[E:\Mojtaba\Programing\Delphi\TaskBook\uDaySelector.pas]
-ModuleType=TSourceModule
-
 [E:\Mojtaba\Programing\Delphi\TaskBook\uMain.pas]
 ModuleType=TSourceModule
 
-[E:\Mojtaba\Programing\Delphi\TaskBook\uLogin.pas]
+[E:\Mojtaba\Programing\Delphi\TaskBook\uDaySelector.pas]
 ModuleType=TSourceModule
 
 [E:\Mojtaba\Programing\Delphi\TaskBook\uDataModule.pas]
@@ -41,6 +38,9 @@ ModuleType=TSourceModule
 
 [E:\Mojtaba\Programing\Delphi\TaskBook\TaskBook.dproj]
 ModuleType=TBaseProject
+
+[E:\Mojtaba\Programing\Delphi\TaskBook\uLogin.pas]
+ModuleType=TSourceModule
 
 [EditWindow0]
 ViewCount=6
@@ -67,9 +67,9 @@ ClientHeight=8008
 DockedToMainForm=1
 BorlandEditorCodeExplorer=BorlandEditorCodeExplorer@EditWindow0
 TopPanelSize=0
-LeftPanelSize=1889
+LeftPanelSize=1896
 LeftPanelClients=PropertyInspector
-LeftPanelData=00000800010100000000FC0E0000000000000161070000000000000100000000A71A00001100000050726F7065727479496E73706563746F72FFFFFFFF
+LeftPanelData=00000800010100000000FC0E0000000000000168070000000000000100000000A71A00001100000050726F7065727479496E73706563746F72FFFFFFFF
 RightPanelSize=1999
 RightPanelClients=DockSite2,DockSite4
 RightPanelData=00000800010100000000FC0E00000000000001CF0700000000000001000000004212000009000000446F636B53697465320100000000A71A000009000000446F636B5369746534FFFFFFFF
@@ -106,24 +106,24 @@ EditViewName=Borland.FormDesignerView
 [View2]
 CustomEditViewType=TEditView
 Module=E:\Mojtaba\Programing\Delphi\TaskBook\uDaySelector.pas
-CursorX=1
-CursorY=45
-TopLine=38
-LeftCol=1
-Elisions=
-Bookmarks=
-EditViewName=E:\Mojtaba\Programing\Delphi\TaskBook\uDaySelector.pas
-
-[View3]
-CustomEditViewType=TEditView
-Module=E:\Mojtaba\Programing\Delphi\TaskBook\uTasks.pas
-CursorX=9
-CursorY=247
-TopLine=227
+CursorX=3
+CursorY=44
+TopLine=30
 LeftCol=1
 Elisions=
 Bookmarks=
 EditViewName=Borland.FormDesignerView
+
+[View3]
+CustomEditViewType=TEditView
+Module=E:\Mojtaba\Programing\Delphi\TaskBook\uTasks.pas
+CursorX=1
+CursorY=104
+TopLine=93
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=E:\Mojtaba\Programing\Delphi\TaskBook\uTasks.pas
 
 [View4]
 CustomEditViewType=TEditView
@@ -139,9 +139,9 @@ EditViewName=E:\Mojtaba\Programing\Delphi\TaskBook\TaskBook.dpr
 [View5]
 CustomEditViewType=TEditView
 Module=E:\Mojtaba\Programing\Delphi\TaskBook\uDataModule.pas
-CursorX=18
-CursorY=24
-TopLine=34
+CursorX=1
+CursorY=31
+TopLine=15
 LeftCol=1
 Elisions=
 Bookmarks=
@@ -172,7 +172,8 @@ Dockable=1
 StayOnTop=0
 
 [Breakpoints]
-Count=0
+Count=1
+Breakpoint0='E:\Mojtaba\Programing\Delphi\TaskBook\uTasks.pas',104,'',0,1,'',1,0,0,'',1,'','','',0,''
 
 [EmbarcaderoWin32Debugger_AddressBreakpoints]
 Count=0
@@ -271,14 +272,14 @@ Docked=1
 State=0
 Left=0
 Top=28
-Width=2019
+Width=2027
 Height=6458
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=2019
+ClientWidth=2027
 ClientHeight=6458
 TBDockHeight=9010
-LRDockWidth=2019
+LRDockWidth=2027
 Dockable=1
 StayOnTop=0
 SplitPos=111
@@ -598,11 +599,11 @@ Docked=1
 State=0
 Left=0
 Top=0
-Width=1894
+Width=1901
 Height=8503
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=1894
+ClientWidth=1901
 ClientHeight=8503
 TBDockHeight=3685
 LRDockWidth=1894
@@ -732,14 +733,14 @@ Docked=1
 State=0
 Left=-80
 Top=8
-Width=2019
+Width=2027
 Height=9010
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=1894
+ClientWidth=1901
 ClientHeight=8503
 TBDockHeight=9010
-LRDockWidth=2019
+LRDockWidth=2027
 Dockable=1
 StayOnTop=0
 TabPosition=1

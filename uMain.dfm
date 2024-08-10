@@ -17,18 +17,20 @@ object fMain: TfMain
   OnShow = FormShow
   TextHeight = 15
   object pnlGrid: TPanel
-    Left = 161
+    Left = 105
     Top = 0
-    Width = 489
+    Width = 545
     Height = 468
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
+    ExplicitLeft = 161
+    ExplicitWidth = 489
     object rzclcksts1: TRzClockStatus
       AlignWithMargins = True
       Left = 3
       Top = 301
-      Width = 483
+      Width = 539
       Align = alBottom
       ExplicitLeft = 80
       ExplicitTop = 412
@@ -38,7 +40,7 @@ object fMain: TfMain
       AlignWithMargins = True
       Left = 3
       Top = 3
-      Width = 278
+      Width = 334
       Height = 292
       Align = alLeft
       DataSource = dsDays
@@ -54,14 +56,15 @@ object fMain: TfMain
     object pnlInput: TPanel
       Left = 0
       Top = 324
-      Width = 489
+      Width = 545
       Height = 144
       Align = alBottom
       TabOrder = 1
+      ExplicitWidth = 489
       object lblDescriptions: TLabel
         Left = 1
         Top = 1
-        Width = 487
+        Width = 543
         Height = 15
         Align = alTop
         Caption = 'descriptions'
@@ -72,7 +75,7 @@ object fMain: TfMain
         AlignWithMargins = True
         Left = 11
         Top = 19
-        Width = 467
+        Width = 523
         Height = 73
         Margins.Left = 10
         Margins.Right = 10
@@ -82,18 +85,20 @@ object fMain: TfMain
         DataSource = dsDays
         TabOrder = 0
         OnDblClick = dbmmodescriptionsDblClick
+        ExplicitWidth = 467
       end
       object pnlbtns: TPanel
         Left = 1
         Top = 102
-        Width = 487
+        Width = 543
         Height = 41
         Align = alBottom
         TabOrder = 1
+        ExplicitWidth = 487
         object grdpnl1: TGridPanel
           Left = 1
           Top = 1
-          Width = 485
+          Width = 541
           Height = 39
           Align = alClient
           ColumnCollection = <
@@ -127,47 +132,54 @@ object fMain: TfMain
               Value = 100.000000000000000000
             end>
           TabOrder = 0
+          ExplicitWidth = 485
           object btnEdit: TButton
             AlignWithMargins = True
             Left = 4
             Top = 4
-            Width = 155
+            Width = 174
             Height = 31
             Action = dtstdt
             Align = alClient
             TabOrder = 0
+            ExplicitWidth = 155
           end
           object btnCancel: TButton
             AlignWithMargins = True
-            Left = 165
+            Left = 184
             Top = 4
-            Width = 156
+            Width = 174
             Height = 31
             Action = dtstcncl
             Align = alClient
             TabOrder = 1
+            ExplicitLeft = 165
+            ExplicitWidth = 156
           end
           object btnPost: TButton
             AlignWithMargins = True
-            Left = 327
+            Left = 364
             Top = 4
-            Width = 154
+            Width = 173
             Height = 31
             Action = dtstpst
             Align = alClient
             TabOrder = 2
+            ExplicitLeft = 327
+            ExplicitWidth = 154
           end
         end
       end
     end
     object grpTimeSheet: TGroupBox
-      Left = 284
+      Left = 340
       Top = 0
       Width = 205
       Height = 298
       Align = alClient
       Caption = 'Time Sheet'
       TabOrder = 2
+      ExplicitLeft = 284
       object dbgrdTimeSheet: TDBGrid
         Left = 2
         Top = 17
@@ -305,7 +317,7 @@ object fMain: TfMain
   object pnlControls: TPanel
     Left = 0
     Top = 0
-    Width = 161
+    Width = 105
     Height = 468
     Align = alLeft
     BevelOuter = bvNone
@@ -313,7 +325,7 @@ object fMain: TfMain
     object GridPanel1: TGridPanel
       Left = 0
       Top = 0
-      Width = 161
+      Width = 105
       Height = 468
       Align = alClient
       ColumnCollection = <
@@ -371,95 +383,120 @@ object fMain: TfMain
           Value = 17.657633996593580000
         end>
       TabOrder = 0
+      ExplicitWidth = 161
       object btnAdd: TButton
         AlignWithMargins = True
-        Left = 11
-        Top = 11
-        Width = 139
-        Height = 55
-        Margins.Left = 10
-        Margins.Top = 10
-        Margins.Right = 10
-        Margins.Bottom = 10
+        Left = 6
+        Top = 6
+        Width = 93
+        Height = 65
+        Margins.Left = 5
+        Margins.Top = 5
+        Margins.Right = 5
+        Margins.Bottom = 5
         Align = alClient
         Caption = 'Add Today'
         TabOrder = 0
         OnClick = btnAddClick
+        ExplicitLeft = 11
+        ExplicitTop = 11
+        ExplicitWidth = 139
+        ExplicitHeight = 55
       end
       object btnExit: TButton
         AlignWithMargins = True
-        Left = 11
-        Top = 395
-        Width = 139
-        Height = 62
-        Margins.Left = 10
-        Margins.Top = 10
-        Margins.Right = 10
-        Margins.Bottom = 10
+        Left = 6
+        Top = 390
+        Width = 93
+        Height = 72
+        Margins.Left = 5
+        Margins.Top = 5
+        Margins.Right = 5
+        Margins.Bottom = 5
         Align = alClient
         Caption = 'Exit'
         TabOrder = 1
         OnClick = btnExitClick
+        ExplicitLeft = 11
+        ExplicitTop = 395
+        ExplicitWidth = 139
+        ExplicitHeight = 62
       end
       object btnShowDay: TButton
         AlignWithMargins = True
-        Left = 11
-        Top = 161
-        Width = 139
-        Height = 56
-        Margins.Left = 10
-        Margins.Top = 10
-        Margins.Right = 10
-        Margins.Bottom = 10
+        Left = 6
+        Top = 156
+        Width = 93
+        Height = 66
+        Margins.Left = 5
+        Margins.Top = 5
+        Margins.Right = 5
+        Margins.Bottom = 5
         Align = alClient
         Caption = 'Show'
         TabOrder = 2
         OnClick = dbgrdDaysDblClick
+        ExplicitLeft = 11
+        ExplicitTop = 161
+        ExplicitWidth = 139
+        ExplicitHeight = 56
       end
       object btnFinish: TButton
         AlignWithMargins = True
-        Left = 11
-        Top = 86
-        Width = 139
-        Height = 55
-        Margins.Left = 10
-        Margins.Top = 10
-        Margins.Right = 10
-        Margins.Bottom = 10
+        Left = 6
+        Top = 81
+        Width = 93
+        Height = 65
+        Margins.Left = 5
+        Margins.Top = 5
+        Margins.Right = 5
+        Margins.Bottom = 5
         Align = alClient
         Caption = 'Finish Today'
         TabOrder = 3
         OnClick = btnFinishClick
+        ExplicitLeft = 11
+        ExplicitTop = 86
+        ExplicitWidth = 139
+        ExplicitHeight = 55
       end
       object btnSetTimesheetIn: TButton
         AlignWithMargins = True
-        Left = 11
-        Top = 237
-        Width = 139
-        Height = 58
-        Margins.Left = 10
-        Margins.Top = 10
-        Margins.Right = 10
-        Margins.Bottom = 10
+        Left = 6
+        Top = 232
+        Width = 93
+        Height = 68
+        Margins.Left = 5
+        Margins.Top = 5
+        Margins.Right = 5
+        Margins.Bottom = 5
         Align = alClient
         Caption = 'IN'
         TabOrder = 4
         OnClick = btnSetTimesheetInClick
+        ExplicitLeft = 11
+        ExplicitTop = 237
+        ExplicitWidth = 139
+        ExplicitHeight = 58
       end
       object btnTimeSheetOut: TButton
         AlignWithMargins = True
-        Left = 11
-        Top = 315
-        Width = 139
-        Height = 60
-        Margins.Left = 10
-        Margins.Top = 10
-        Margins.Right = 10
-        Margins.Bottom = 10
+        Left = 6
+        Top = 310
+        Width = 93
+        Height = 70
+        Margins.Left = 5
+        Margins.Top = 5
+        Margins.Right = 5
+        Margins.Bottom = 5
         Align = alClient
         Caption = 'OUT'
         TabOrder = 5
         OnClick = btnTimeSheetOutClick
+        ExplicitLeft = 11
+        ExplicitTop = 315
+        ExplicitWidth = 139
+        ExplicitHeight = 60
       end
     end
   end
@@ -472,6 +509,7 @@ object fMain: TfMain
     SQL.Strings = (
       'SELECT id,'
       '       td.person_id,'
+      '       FORMAT(td.working_date, '#39'dddd'#39', '#39'fa-IR'#39') AS day_name,'
       
         '       FORMAT(td.working_date, '#39'yyyy/MM/dd'#39', '#39'fa'#39') AS working_da' +
         'te,'
@@ -480,15 +518,11 @@ object fMain: TfMain
       '       td.descriptions'
       'FROM   tblDays AS td'
       'WHERE  td.person_id = 1')
-    Left = 208
-    Top = 128
+    Left = 256
+    Top = 352
     object qryDaysid: TAutoIncField
       FieldName = 'id'
       ReadOnly = True
-      Visible = False
-    end
-    object qryDays_person_id: TIntegerField
-      FieldName = 'person_id'
       Visible = False
     end
     object qryDaysworking_date: TWideStringField
@@ -498,16 +532,27 @@ object fMain: TfMain
       ReadOnly = True
       Size = 4000
     end
+    object qryDaysday_name: TWideStringField
+      DisplayLabel = 'Day'
+      DisplayWidth = 8
+      FieldName = 'day_name'
+      ReadOnly = True
+      Size = 4000
+    end
+    object qryDays_person_id: TIntegerField
+      FieldName = 'person_id'
+      Visible = False
+    end
     object qryDaysstarted_at: TWideStringField
       DisplayLabel = 'Start Time'
-      DisplayWidth = 15
+      DisplayWidth = 10
       FieldName = 'started_at'
       ReadOnly = True
       Size = 4000
     end
     object qryDaysfinished_at: TWideStringField
       DisplayLabel = 'Finish Time'
-      DisplayWidth = 15
+      DisplayWidth = 10
       FieldName = 'finished_at'
       ReadOnly = True
       Size = 4000
@@ -521,12 +566,12 @@ object fMain: TfMain
   object dsDays: TDataSource
     DataSet = qryDays
     OnStateChange = dsDaysStateChange
-    Left = 329
-    Top = 144
+    Left = 313
+    Top = 352
   end
   object actmgr1: TActionManager
-    Left = 280
-    Top = 184
+    Left = 384
+    Top = 352
     StyleName = 'Platform Default'
     object actEditTimeSheet: TDataSetEdit
       Category = 'Dataset'
@@ -603,8 +648,8 @@ object fMain: TfMain
       '       descriptions'
       'FROM   tbltimesheet'
       'WHERE Day_id=:day_id')
-    Left = 525
-    Top = 112
+    Left = 501
+    Top = 96
     object qryTimeSheetid: TAutoIncField
       FieldName = 'id'
       ReadOnly = True
@@ -637,7 +682,7 @@ object fMain: TfMain
   object dsTimeSheet: TDataSource
     DataSet = qryTimeSheet
     OnStateChange = dsTimeSheetStateChange
-    Left = 509
-    Top = 32
+    Left = 581
+    Top = 96
   end
 end

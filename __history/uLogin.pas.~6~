@@ -22,7 +22,6 @@ type
     edtUsername1: TEdit;
     procedure btnLoginClick(Sender: TObject);
     procedure btnExitClick(Sender: TObject);
-    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -57,11 +56,6 @@ begin
     Free;
   end;
 
-end;
-
-procedure TfLogin.FormShow(Sender: TObject);
-begin
-  edtUsername1.SetFocus;
 end;
 
 end.

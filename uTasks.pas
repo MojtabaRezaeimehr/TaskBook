@@ -24,7 +24,7 @@ type
     btnFinish: TButton;
     qryTasks: TADOQuery;
     dsTasks: TDataSource;
-    atncfldTasksid: TAutoIncField;
+    qryTaskId: TAutoIncField;
     intgrfldTasksday_id: TIntegerField;
     qryTaskstitle: TWideStringField;
     qryTasksdescription: TWideMemoField;
@@ -172,8 +172,8 @@ end;
 procedure TfTasks.btnStartClick(Sender: TObject);
 var
   sSqlCmd: string;
+  iTaskId: Integer;
 begin
-
   if qryTasks.RecordCount = 0 then
     exit;
   if qryTasksstarted_at.AsString <> '' then
@@ -191,7 +191,9 @@ begin
     cmd1.Parameters.ParamByName('Task_Id').Value := qryTasks.FieldByName('id').AsString;
     cmd1.Execute;
   end;
+  iTaskId:=qryTaskId.Value;
   RefreshGrid;
+  qryTasks.Locate('id',iTaskId,[]);
 end;
 
 procedure TfTasks.DatasetDelete1Execute(Sender: TObject);
