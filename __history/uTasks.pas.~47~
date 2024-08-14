@@ -24,7 +24,7 @@ type
     btnFinish: TButton;
     qryTasks: TADOQuery;
     dsTasks: TDataSource;
-    atncfldTasksid: TAutoIncField;
+    qryTaskId: TAutoIncField;
     intgrfldTasksday_id: TIntegerField;
     qryTaskstitle: TWideStringField;
     qryTasksdescription: TWideMemoField;
@@ -44,12 +44,6 @@ type
     dbmmodescription: TDBMemo;
     lbl: TLabel;
     dbedtdue_date: TDBEdit;
-    lbl1: TLabel;
-    dbedtcreated_at: TDBEdit;
-    lbl2: TLabel;
-    dbedtstarted_at: TDBEdit;
-    lbl3: TLabel;
-    dbedtfinished_at: TDBEdit;
     actmgr1: TActionManager;
     DatasetInsert1: TDataSetInsert;
     DatasetDelete1: TDataSetDelete;
@@ -60,8 +54,6 @@ type
     WindowClose1: TWindowClose;
     edtDayId: TEdit;
     lblDayId: TLabel;
-    lbl4: TLabel;
-    dbedtUpdated_at: TDBEdit;
     btnCopy: TButton;
     procedure btnFinishClick(Sender: TObject);
     procedure WindowClose1Execute(Sender: TObject);
@@ -72,6 +64,8 @@ type
     procedure qryTasksBeforeInsert(DataSet: TDataSet);
     procedure qryTasksBeforePost(DataSet: TDataSet);
     procedure btnCopyClick(Sender: TObject);
+    procedure dbedtdue_dateDblClick(Sender: TObject);
+    procedure dbgrdTasksDblClick(Sender: TObject);
   private
     procedure RefreshGrid;
     procedure SetControlsEnabledStatus(enabled: Boolean);
@@ -107,7 +101,7 @@ begin
       Open;
     end;
     ShowModal;
-    if ModalResult <> mrOk then
+     if ModalResult <> mrOk then
       exit;
     if qryDaysSelector.RecordCount = 0 then
       exit;
@@ -161,6 +155,10 @@ var
 begin
   if qryTasks.RecordCount = 0 then
     exit;
+  if not qryTasksfinished_at.IsNull then
+    if MessageDlg('The task has been finished before!'+#10
+    +' Are you sure you want to change the finish time?', TMsgDlgType.mtWarning, [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo], 0) <> mrYes then
+      Exit;
   sSqlCmd := 'UPDATE tblTasks SET finished_at = GETDATE() WHERE id =:Task_Id ';
   with DataModule1 do
   begin
@@ -174,13 +172,14 @@ end;
 procedure TfTasks.btnStartClick(Sender: TObject);
 var
   sSqlCmd: string;
+  iTaskId: Integer;
 begin
-
   if qryTasks.RecordCount = 0 then
     exit;
   if qryTasksstarted_at.AsString <> '' then
   begin
-    if MessageDlg('The task is running! Are you sure you want to restart?', TMsgDlgType.mtWarning, [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo], 0) <> mrYes then
+    if MessageDlg('The task has been started before!'+#10
+    +' Are you sure you want to restart?', TMsgDlgType.mtWarning, [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo], 0) <> mrYes then
     begin
       Exit;
     end;
@@ -192,13 +191,30 @@ begin
     cmd1.Parameters.ParamByName('Task_Id').Value := qryTasks.FieldByName('id').AsString;
     cmd1.Execute;
   end;
+  iTaskId:=qryTaskId.Value;
   RefreshGrid;
+  qryTasks.Locate('id',iTaskId,[]);
 end;
 
 procedure TfTasks.DatasetDelete1Execute(Sender: TObject);
 begin
   if MessageDlg('Are you sure you want to delete?', TMsgDlgType.mtConfirmation, [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo], 0) = mrYes then
     qryTasks.Delete;
+end;
+
+procedure TfTasks.dbedtdue_dateDblClick(Sender: TObject);
+var sQry,sCurrentDate:string;
+begin
+  sQry:= 'SELECT FORMAT(GETDATE() ,''yyyy/MM/dd'' ,''fa'') AS today_fa';
+  DataModule1.ExecuteSql(sQry);
+  sCurrentDate:= DataModule1.qry1.FieldByName('today_fa').Value;
+  dbedtdue_date.Text:=sCurrentDate;
+end;
+
+procedure TfTasks.dbgrdTasksDblClick(Sender: TObject);
+begin
+  qryTasks.Edit;
+  dbmmodescription.SetFocus;
 end;
 
 procedure TfTasks.dsTasksStateChange(Sender: TObject);
@@ -225,6 +241,9 @@ begin
   dbedttitle.Enabled := enabled;
   dbmmodescription.Enabled := enabled;
   dbedtdue_date.Enabled := enabled;
+  btnStart.Enabled := not enabled;
+  btnFinish.Enabled := not enabled;
+  btnCopy.Enabled := not enabled;
 end;
 
 procedure TfTasks.qryTasksAfterInsert(DataSet: TDataSet);

@@ -1,56 +1,46 @@
 ﻿[Closed Files]
-File_0=TSourceModule,'c:\program files (x86)\embarcadero\studio\22.0\source\data\Data.DB.pas',0,1,15227,1,15238,0,0,,
-File_1=TSourceModule,'C:\Program Files (x86)\Embarcadero\Studio\22.0\source\vcl\Vcl.Controls.pas',0,1,10266,1,10277,0,0,,
-File_2=TSourceModule,'E:\Mojtaba\Programing\Delphi\ArshamTTAC\AMF_TTAC\forms&units\uSubBatches.pas',0,1,242,1,248,0,0,,
-File_3=TSourceModule,'E:\Mojtaba\Programing\Delphi\ArshamTTAC\AMF_TTAC\forms&units\uDataModule.pas',0,1,1,1,1,0,0,,
-File_4=TSourceModule,'E:\Mojtaba\Programing\Delphi\ArshamTTAC\AMF_TTAC\forms&units\uOrder.pas',0,1,2730,33,2705,0,0,,{1
-File_5=TSourceModule,'E:\Mojtaba\Programing\Delphi\ArshamTTAC\AMF_TTAC\uCustomerInfo.pas',0,1,4,49,16,0,0,,
-File_6=TSourceModule,'E:\Mojtaba\Programing\Delphi\ArshamTTAC\AMF_TTAC\uGlobal.pas',0,1,590,1,603,0,0,{{3291,4}
-File_7=TSourceModule,'E:\Mojtaba\Programing\Delphi\ArshamTTAC\AMF_TTAC\uMain.pas',0,1,1,1,1,0,0,{{524,6}
-File_8=TSourceModule,'E:\Mojtaba\Programing\Delphi\ArshamTTAC\AMF_TTAC\forms&units\uImportExcel.pas',0,1,1082,26,1056,0,0,{{1187,0}
-File_9=TSourceModule,'E:\Mojtaba\Programing\Delphi\ArshamTTAC\AMF_TTAC\forms&units\uAutoRecover.pas',0,1,135,1,146,0,0,,
-File_10=TSourceModule,'E:\Mojtaba\Programing\Delphi\ArshamTTAC\AMF_TTAC\forms&units\uOrderClass.pas',0,1,1082,1,1090,0,0,,
-File_11=TSourceModule,'E:\Mojtaba\Programing\Delphi\ArshamTTAC\AMF_TTAC\forms&units\uXML.pas',0,1,1,1,1,0,0,,
-File_12=TSourceModule,'E:\Mojtaba\Programing\Delphi\ArshamTTAC\AMF_TTAC\forms&units\uProduct.pas',0,1,1,1,1,0,0,,
-File_13=TSourceModule,'E:\Mojtaba\Programing\Delphi\ArshamTTAC\AMF_TTAC\forms&units\uProductSearch.pas',0,1,244,1,245,0,0,,
+File_0=TSourceModule,'E:\Mojtaba\Programing\Delphi\TaskBook\uDaySelector.pas',0,1,30,3,44,0,0,,
+File_1=TSourceModule,'c:\program files (x86)\embarcadero\studio\22.0\source\data\Data.DB.pas',0,1,15227,1,15238,0,0,,
+File_2=TSourceModule,'C:\Program Files (x86)\Embarcadero\Studio\22.0\source\vcl\Vcl.Controls.pas',0,1,10266,1,10277,0,0,,
+File_3=TSourceModule,'E:\Mojtaba\Programing\Delphi\ArshamTTAC\AMF_TTAC\forms&units\uSubBatches.pas',0,1,242,1,248,0,0,,
+File_4=TSourceModule,'E:\Mojtaba\Programing\Delphi\ArshamTTAC\AMF_TTAC\forms&units\uDataModule.pas',0,1,1,1,1,0,0,,
+File_5=TSourceModule,'E:\Mojtaba\Programing\Delphi\ArshamTTAC\AMF_TTAC\forms&units\uOrder.pas',0,1,2730,33,2705,0,0,,{1
+File_6=TSourceModule,'E:\Mojtaba\Programing\Delphi\ArshamTTAC\AMF_TTAC\uCustomerInfo.pas',0,1,4,49,16,0,0,,
+File_7=TSourceModule,'E:\Mojtaba\Programing\Delphi\ArshamTTAC\AMF_TTAC\uGlobal.pas',0,1,590,1,603,0,0,{{3291,4}
+File_8=TSourceModule,'E:\Mojtaba\Programing\Delphi\ArshamTTAC\AMF_TTAC\uMain.pas',0,1,1,1,1,0,0,{{524,6}
+File_9=TSourceModule,'E:\Mojtaba\Programing\Delphi\ArshamTTAC\AMF_TTAC\forms&units\uImportExcel.pas',0,1,1082,26,1056,0,0,{{1187,0}
+File_10=TSourceModule,'E:\Mojtaba\Programing\Delphi\ArshamTTAC\AMF_TTAC\forms&units\uAutoRecover.pas',0,1,135,1,146,0,0,,
+File_11=TSourceModule,'E:\Mojtaba\Programing\Delphi\ArshamTTAC\AMF_TTAC\forms&units\uOrderClass.pas',0,1,1082,1,1090,0,0,,
+File_12=TSourceModule,'E:\Mojtaba\Programing\Delphi\ArshamTTAC\AMF_TTAC\forms&units\uXML.pas',0,1,1,1,1,0,0,,
+File_13=TSourceModule,'E:\Mojtaba\Programing\Delphi\ArshamTTAC\AMF_TTAC\forms&units\uProduct.pas',0,1,1,1,1,0,0,,
 
 [Modules]
-Module0=E:\Mojtaba\Programing\Delphi\TaskBook\uTasks.pas
-Module1=E:\Mojtaba\Programing\Delphi\TaskBook\uMain.pas
-Module2=E:\Mojtaba\Programing\Delphi\TaskBook\uDaySelector.pas
+Module0=E:\Mojtaba\Programing\Delphi\TaskBook\uMain.pas
+Module1=E:\Mojtaba\Programing\Delphi\TaskBook\uLogin.pas
+Module2=E:\Mojtaba\Programing\Delphi\TaskBook\uTasks.pas
 Module3=E:\Mojtaba\Programing\Delphi\TaskBook\uDataModule.pas
-Module4=E:\Mojtaba\Programing\Delphi\TaskBook\TaskBook.dproj
-Module5=E:\Mojtaba\Programing\Delphi\TaskBook\uLogin.pas
-Count=6
+Count=4
 EditWindowCount=1
-
-[E:\Mojtaba\Programing\Delphi\TaskBook\uTasks.pas]
-ModuleType=TSourceModule
 
 [E:\Mojtaba\Programing\Delphi\TaskBook\uMain.pas]
 ModuleType=TSourceModule
 
-[E:\Mojtaba\Programing\Delphi\TaskBook\uDaySelector.pas]
+[E:\Mojtaba\Programing\Delphi\TaskBook\uLogin.pas]
+ModuleType=TSourceModule
+
+[E:\Mojtaba\Programing\Delphi\TaskBook\uTasks.pas]
 ModuleType=TSourceModule
 
 [E:\Mojtaba\Programing\Delphi\TaskBook\uDataModule.pas]
 ModuleType=TSourceModule
 
-[E:\Mojtaba\Programing\Delphi\TaskBook\TaskBook.dproj]
-ModuleType=TBaseProject
-
-[E:\Mojtaba\Programing\Delphi\TaskBook\uLogin.pas]
-ModuleType=TSourceModule
-
 [EditWindow0]
-ViewCount=6
-CurrentEditView=E:\Mojtaba\Programing\Delphi\TaskBook\uTasks.pas
+ViewCount=4
+CurrentEditView=E:\Mojtaba\Programing\Delphi\TaskBook\uMain.pas
 View0=0
 View1=1
 View2=2
 View3=3
-View4=4
-View5=5
 PercentageSizes=1
 Create=1
 Visible=1
@@ -84,20 +74,20 @@ TabDockLeftClients=DockSite3=0
 [View0]
 CustomEditViewType=TEditView
 Module=E:\Mojtaba\Programing\Delphi\TaskBook\uLogin.pas
-CursorX=15
-CursorY=52
-TopLine=46
+CursorX=25
+CursorY=64
+TopLine=67
 LeftCol=1
 Elisions=
 Bookmarks=
-EditViewName=E:\Mojtaba\Programing\Delphi\TaskBook\uLogin.pas
+EditViewName=Borland.FormDesignerView
 
 [View1]
 CustomEditViewType=TEditView
 Module=E:\Mojtaba\Programing\Delphi\TaskBook\uMain.pas
-CursorX=1
-CursorY=250
-TopLine=242
+CursorX=16
+CursorY=126
+TopLine=96
 LeftCol=1
 Elisions=
 Bookmarks=
@@ -105,10 +95,10 @@ EditViewName=Borland.FormDesignerView
 
 [View2]
 CustomEditViewType=TEditView
-Module=E:\Mojtaba\Programing\Delphi\TaskBook\uDaySelector.pas
-CursorX=3
-CursorY=44
-TopLine=30
+Module=E:\Mojtaba\Programing\Delphi\TaskBook\uDataModule.pas
+CursorX=1
+CursorY=1
+TopLine=1
 LeftCol=1
 Elisions=
 Bookmarks=
@@ -117,35 +107,13 @@ EditViewName=Borland.FormDesignerView
 [View3]
 CustomEditViewType=TEditView
 Module=E:\Mojtaba\Programing\Delphi\TaskBook\uTasks.pas
-CursorX=1
-CursorY=104
-TopLine=93
+CursorX=36
+CursorY=196
+TopLine=182
 LeftCol=1
 Elisions=
 Bookmarks=
-EditViewName=E:\Mojtaba\Programing\Delphi\TaskBook\uTasks.pas
-
-[View4]
-CustomEditViewType=TEditView
-Module=E:\Mojtaba\Programing\Delphi\TaskBook\TaskBook.dpr
-CursorX=2
-CursorY=17
-TopLine=2
-LeftCol=1
-Elisions=
-Bookmarks=
-EditViewName=E:\Mojtaba\Programing\Delphi\TaskBook\TaskBook.dpr
-
-[View5]
-CustomEditViewType=TEditView
-Module=E:\Mojtaba\Programing\Delphi\TaskBook\uDataModule.pas
-CursorX=1
-CursorY=31
-TopLine=15
-LeftCol=1
-Elisions=
-Bookmarks=
-EditViewName=E:\Mojtaba\Programing\Delphi\TaskBook\uDataModule.pas
+EditViewName=Borland.FormDesignerView
 
 [Watches]
 Count=0

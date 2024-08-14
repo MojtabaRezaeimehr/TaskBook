@@ -66,6 +66,7 @@ type
     procedure btnCopyClick(Sender: TObject);
     procedure dbedtdue_dateDblClick(Sender: TObject);
     procedure dbgrdTasksDblClick(Sender: TObject);
+    procedure dbedttitleDblClick(Sender: TObject);
   private
     procedure RefreshGrid;
     procedure SetControlsEnabledStatus(enabled: Boolean);
@@ -80,7 +81,7 @@ var
 implementation
 
 uses
-  uDataModule, uDaySelector;
+  uDataModule, uDaySelector, uTasksSelector;
 
 {$R *.dfm}
 
@@ -209,6 +210,29 @@ begin
   DataModule1.ExecuteSql(sQry);
   sCurrentDate:= DataModule1.qry1.FieldByName('today_fa').Value;
   dbedtdue_date.Text:=sCurrentDate;
+end;
+
+procedure TfTasks.dbedttitleDblClick(Sender: TObject);
+var
+  ftasksSelector: TfTasksSelector;
+  sDay_id, sTask_id, sCmd: string;
+begin
+ftasksSelector := TfTasksSelector.Create(self);
+  with ftasksSelector do
+  begin
+//    if qryTasksSelector.RecordCount = 0 then
+//      Exit;
+    with qryTasksSelector do
+    begin
+      Parameters.ParamByName('person_id').Value := UserId;
+      Close;
+      Open;
+    end;
+    ShowModal;
+    if ModalResult <> mrOk then
+      Exit;
+    dbedttitle.Text := qryTasksSelector.FieldByName('title').Value;
+  end;
 end;
 
 procedure TfTasks.dbgrdTasksDblClick(Sender: TObject);

@@ -2,10 +2,9 @@ object DataModule1: TDataModule1
   Height = 245
   Width = 386
   object MainConnection: TADOConnection
-    Connected = True
     ConnectionString = 
-      'Provider=SQLOLEDB.1;Password=amf@sql;Persist Security Info=True;' +
-      'User ID=sa;Initial Catalog=TaskBook;Data Source=.'
+      'Provider=SQLOLEDB.1;Password=amf@sql2022;Persist Security Info=T' +
+      'rue;User ID=sa;Initial Catalog=TaskBook;Data Source=.'
     LoginPrompt = False
     Provider = 'SQLOLEDB.1'
     Left = 136
@@ -14,13 +13,13 @@ object DataModule1: TDataModule1
   object qry1: TADOQuery
     Connection = MainConnection
     Parameters = <>
-    Left = 104
-    Top = 104
+    Left = 80
+    Top = 112
   end
   object cmd1: TADOCommand
     Connection = MainConnection
     Parameters = <>
-    Left = 216
-    Top = 104
+    Left = 192
+    Top = 112
   end
 end

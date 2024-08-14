@@ -20,8 +20,6 @@ object fTasks: TfTasks
     Height = 160
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 682
-    ExplicitHeight = 209
     object dbgrdTasks: TDBGrid
       Left = 1
       Top = 1
@@ -46,7 +44,6 @@ object fTasks: TfTasks
     Height = 41
     Align = alBottom
     TabOrder = 1
-    ExplicitWidth = 682
     object GridPanel1: TGridPanel
       Left = 1
       Top = 1
@@ -132,7 +129,6 @@ object fTasks: TfTasks
           Value = 100.000000000000000000
         end>
       TabOrder = 0
-      ExplicitWidth = 680
       object btnAdd: TButton
         AlignWithMargins = True
         Left = 4
@@ -142,7 +138,6 @@ object fTasks: TfTasks
         Action = DatasetInsert1
         Align = alClient
         TabOrder = 0
-        ExplicitWidth = 69
       end
       object btnEdit: TButton
         AlignWithMargins = True
@@ -153,8 +148,6 @@ object fTasks: TfTasks
         Action = DatasetEdit1
         Align = alClient
         TabOrder = 1
-        ExplicitLeft = 79
-        ExplicitWidth = 69
       end
       object btnDelete: TButton
         AlignWithMargins = True
@@ -165,8 +158,6 @@ object fTasks: TfTasks
         Action = DatasetDelete1
         Align = alClient
         TabOrder = 2
-        ExplicitLeft = 154
-        ExplicitWidth = 70
       end
       object btnCancel: TButton
         AlignWithMargins = True
@@ -177,8 +168,6 @@ object fTasks: TfTasks
         Action = DatasetCancel1
         Align = alClient
         TabOrder = 3
-        ExplicitLeft = 230
-        ExplicitWidth = 69
       end
       object btnSave: TButton
         AlignWithMargins = True
@@ -189,8 +178,6 @@ object fTasks: TfTasks
         Action = DatasetPost1
         Align = alClient
         TabOrder = 4
-        ExplicitLeft = 305
-        ExplicitWidth = 70
       end
       object btnStart: TButton
         AlignWithMargins = True
@@ -202,8 +189,6 @@ object fTasks: TfTasks
         Caption = '&Start'
         TabOrder = 5
         OnClick = btnStartClick
-        ExplicitLeft = 381
-        ExplicitWidth = 69
       end
       object btnFinish: TButton
         AlignWithMargins = True
@@ -215,8 +200,6 @@ object fTasks: TfTasks
         Caption = '&Finish'
         TabOrder = 6
         OnClick = btnFinishClick
-        ExplicitLeft = 456
-        ExplicitWidth = 70
       end
       object btnBack: TButton
         AlignWithMargins = True
@@ -229,8 +212,6 @@ object fTasks: TfTasks
         Caption = 'C&lose'
         TabOrder = 7
         OnClick = WindowClose1Execute
-        ExplicitLeft = 607
-        ExplicitWidth = 69
       end
       object btnCopy: TButton
         AlignWithMargins = True
@@ -242,8 +223,6 @@ object fTasks: TfTasks
         Caption = 'Copy'
         TabOrder = 8
         OnClick = btnCopyClick
-        ExplicitLeft = 532
-        ExplicitWidth = 69
       end
     end
   end
@@ -254,7 +233,6 @@ object fTasks: TfTasks
     Height = 262
     Align = alBottom
     TabOrder = 2
-    ExplicitWidth = 682
     object lblTtile: TLabel
       AlignWithMargins = True
       Left = 4
@@ -306,7 +284,7 @@ object fTasks: TfTasks
       DataField = 'title'
       DataSource = dsTasks
       TabOrder = 0
-      ExplicitWidth = 674
+      OnDblClick = dbedttitleDblClick
     end
     object dbmmodescription: TDBMemo
       AlignWithMargins = True
@@ -318,8 +296,6 @@ object fTasks: TfTasks
       DataField = 'description'
       DataSource = dsTasks
       TabOrder = 1
-      ExplicitWidth = 674
-      ExplicitHeight = 84
     end
     object dbedtdue_date: TDBEdit
       AlignWithMargins = True
@@ -332,7 +308,6 @@ object fTasks: TfTasks
       DataSource = dsTasks
       TabOrder = 2
       OnDblClick = dbedtdue_dateDblClick
-      ExplicitWidth = 674
     end
     object edtDayId: TEdit
       Left = 408

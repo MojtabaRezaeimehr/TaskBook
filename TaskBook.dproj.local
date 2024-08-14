@@ -11,20 +11,27 @@
     <Transaction>2024/07/29 14:56:05.000.755,=C:\Users\Mojtaba\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
     <Transaction>2024/07/29 15:07:57.000.531,C:\Users\Mojtaba\Documents\Embarcadero\Studio\Projects\uLogin.dfm=C:\Users\Mojtaba\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
     <Transaction>2024/07/29 15:07:57.000.531,C:\Users\Mojtaba\Documents\Embarcadero\Studio\Projects\uLogin.pas=C:\Users\Mojtaba\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2024/07/29 15:09:45.000.624,E:\Mojtaba\Programing\Delphi\TaskBook\uLogin.pas=C:\Users\Mojtaba\Documents\Embarcadero\Studio\Projects\uLogin.pas</Transaction>
     <Transaction>2024/07/29 15:09:45.000.624,E:\Mojtaba\Programing\Delphi\TaskBook\uLogin.dfm=C:\Users\Mojtaba\Documents\Embarcadero\Studio\Projects\uLogin.dfm</Transaction>
+    <Transaction>2024/07/29 15:09:45.000.624,E:\Mojtaba\Programing\Delphi\TaskBook\uLogin.pas=C:\Users\Mojtaba\Documents\Embarcadero\Studio\Projects\uLogin.pas</Transaction>
     <Transaction>2024/07/29 15:09:55.000.475,E:\Mojtaba\Programing\Delphi\TaskBook\TaskBook.dproj=C:\Users\Mojtaba\Documents\Embarcadero\Studio\Projects\Project2.dproj</Transaction>
     <Transaction>2024/07/29 15:10:05.000.424,=E:\Mojtaba\Programing\Delphi\TaskBook\Unit1.pas</Transaction>
-    <Transaction>2024/07/29 15:25:02.000.169,E:\Mojtaba\Programing\Delphi\TaskBook\uMain.pas=E:\Mojtaba\Programing\Delphi\TaskBook\Unit1.pas</Transaction>
     <Transaction>2024/07/29 15:25:02.000.169,E:\Mojtaba\Programing\Delphi\TaskBook\uMain.dfm=E:\Mojtaba\Programing\Delphi\TaskBook\Unit1.dfm</Transaction>
+    <Transaction>2024/07/29 15:25:02.000.169,E:\Mojtaba\Programing\Delphi\TaskBook\uMain.pas=E:\Mojtaba\Programing\Delphi\TaskBook\Unit1.pas</Transaction>
     <Transaction>2024/07/29 15:26:41.000.254,=E:\Mojtaba\Programing\Delphi\TaskBook\Unit1.pas</Transaction>
-    <Transaction>2024/07/29 15:27:03.000.377,E:\Mojtaba\Programing\Delphi\TaskBook\uDataModule.pas=E:\Mojtaba\Programing\Delphi\TaskBook\Unit1.pas</Transaction>
     <Transaction>2024/07/29 15:27:03.000.377,E:\Mojtaba\Programing\Delphi\TaskBook\uDataModule.dfm=E:\Mojtaba\Programing\Delphi\TaskBook\Unit1.dfm</Transaction>
+    <Transaction>2024/07/29 15:27:03.000.377,E:\Mojtaba\Programing\Delphi\TaskBook\uDataModule.pas=E:\Mojtaba\Programing\Delphi\TaskBook\Unit1.pas</Transaction>
     <Transaction>2024/07/30 12:37:41.000.142,=E:\Mojtaba\Programing\Delphi\TaskBook\Unit1.pas</Transaction>
     <Transaction>2024/07/30 12:37:55.000.148,E:\Mojtaba\Programing\Delphi\TaskBook\Unit1.dfm=E:\Mojtaba\Programing\Delphi\TaskBook\uTasks.dfm</Transaction>
     <Transaction>2024/07/30 12:37:55.000.148,E:\Mojtaba\Programing\Delphi\TaskBook\Unit1.pas=E:\Mojtaba\Programing\Delphi\TaskBook\uTasks.pas</Transaction>
     <Transaction>2024/08/05 09:48:42.000.264,=E:\Mojtaba\Programing\Delphi\TaskBook\Unit1.pas</Transaction>
     <Transaction>2024/08/05 09:51:15.000.730,E:\Mojtaba\Programing\Delphi\TaskBook\Unit1.pas=E:\Mojtaba\Programing\Delphi\TaskBook\uDaySelector.pas</Transaction>
     <Transaction>2024/08/05 09:51:15.000.730,E:\Mojtaba\Programing\Delphi\TaskBook\Unit1.dfm=E:\Mojtaba\Programing\Delphi\TaskBook\uDaySelector.dfm</Transaction>
+    <Transaction>2024/08/14 14:26:04.161,=E:\Mojtaba\Programing\Delphi\TaskBook\Unit1.pas</Transaction>
+    <Transaction>2024/08/14 14:27:59.916,E:\Mojtaba\Programing\Delphi\TaskBook\uTaskSelector.dfm=E:\Mojtaba\Programing\Delphi\TaskBook\Unit1.dfm</Transaction>
+    <Transaction>2024/08/14 14:27:59.916,E:\Mojtaba\Programing\Delphi\TaskBook\uTaskSelector.pas=E:\Mojtaba\Programing\Delphi\TaskBook\Unit1.pas</Transaction>
+    <Transaction>2024/08/14 14:28:27.563,=E:\Mojtaba\Programing\Delphi\TaskBook\Unit1.pas</Transaction>
+    <Transaction>2024/08/14 14:35:37.387,=E:\Mojtaba\Programing\Delphi\TaskBook\Unit1.pas</Transaction>
+    <Transaction>2024/08/14 14:41:48.370,E:\Mojtaba\Programing\Delphi\TaskBook\uTasksSelector.dfm=E:\Mojtaba\Programing\Delphi\TaskBook\Unit1.dfm</Transaction>
+    <Transaction>2024/08/14 14:41:48.370,E:\Mojtaba\Programing\Delphi\TaskBook\uTasksSelector.pas=E:\Mojtaba\Programing\Delphi\TaskBook\Unit1.pas</Transaction>
   </Transactions>
 </BorlandProject>

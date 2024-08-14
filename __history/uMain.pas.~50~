@@ -64,6 +64,7 @@ type
     btnTimeSheetOut: TButton;
     btnDeleteTimeSheet: TButton;
     actDeleteTimeSheet: TDataSetDelete;
+    qryDaysday_name: TWideStringField;
     procedure btnExitClick(Sender: TObject);
     procedure dbgrdDaysDblClick(Sender: TObject);
     procedure btnAddClick(Sender: TObject);
@@ -78,6 +79,7 @@ type
     procedure btnSetTimesheetInClick(Sender: TObject);
     procedure btnTimeSheetOutClick(Sender: TObject);
     procedure qryTimeSheetAfterScroll(DataSet: TDataSet);
+    procedure btnDeleteTimeSheetClick(Sender: TObject);
   private
     procedure RefreshGrid;
     procedure RefreshTimeSheetGrid;
@@ -147,6 +149,12 @@ begin
   end;
 end;
 
+procedure TfMain.btnDeleteTimeSheetClick(Sender: TObject);
+begin
+  if MessageDlg('Are you sure you want to delete?', TMsgDlgType.mtConfirmation, [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo], 0) = mrYes then
+    qryTimeSheet.Delete;
+end;
+
 procedure TfMain.btnExitClick(Sender: TObject);
 begin
   if MessageDlg('Are you sure you want to exit?', TMsgDlgType.mtConfirmation, [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo], 0) = mrYes then
@@ -203,6 +211,8 @@ begin
   end;
   DataModule1.cmd1.Execute;
   RefreshTimeSheetGrid;
+  if qryTimeSheet.State <> dsEdit then
+    qryTimeSheet.Last;
 end;
 
 procedure TfMain.btnTimeSheetOutClick(Sender: TObject);
@@ -274,6 +284,13 @@ end;
 
 procedure TfMain.dsTimeSheetStateChange(Sender: TObject);
 begin
+  if (qryTimeSheet.Active)and (qryTimeSheet.RecordCount = 0) then
+  begin
+    dbmmoTimeSheetDescriptions.Enabled := False;
+    btnDeleteTimeSheet.Enabled := False;
+//    btnTimeSheetEdit.Enabled:=False;
+    Exit;
+  end;
   if qryTimeSheet.State = dsEdit then
   begin
     dbmmoTimeSheetDescriptions.Enabled := True;
@@ -282,6 +299,14 @@ begin
   else
   begin
     dbmmoTimeSheetDescriptions.Enabled := False;
+  end;
+  if qryTimeSheet.State in [dsEdit, dsInsert] then
+  begin
+    btnDeleteTimeSheet.Enabled := False;
+  end
+  else
+  begin
+    btnDeleteTimeSheet.Enabled := True;
   end;
 end;
 
@@ -302,6 +327,7 @@ end;
 procedure TfMain.FormShow(Sender: TObject);
 begin
   RefreshGrid;
+  qryDays.Last;
 end;
 
 procedure TfMain.qryDaysAfterScroll(DataSet: TDataSet);

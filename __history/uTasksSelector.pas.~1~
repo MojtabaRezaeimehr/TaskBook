@@ -1,0 +1,32 @@
+unit uTasksSelector;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Data.Win.ADODB, Vcl.StdCtrls,
+  Vcl.ExtCtrls, Vcl.Grids, Vcl.DBGrids;
+
+type
+  TfTasksSelector = class(TForm)
+    grpDaysList: TGroupBox;
+    dbgrdDays: TDBGrid;
+    grdpnlBtns: TGridPanel;
+    btnSelect: TButton;
+    btnCancel: TButton;
+    qryTasksSelector: TADOQuery;
+    dsTasksSelector: TDataSource;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  fTasksSelector: TfTasksSelector;
+
+implementation
+
+{$R *.dfm}
+
+end.

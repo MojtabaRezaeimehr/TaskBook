@@ -128,6 +128,10 @@
             <Form>fDaysSelector</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="uTasksSelector.pas">
+            <Form>fTasksSelector</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -980,6 +984,7 @@
                 <Platform value="Win32">True</Platform>
                 <Platform value="Win64">False</Platform>
             </Platforms>
+            <ModelSupport>False</ModelSupport>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>
     </ProjectExtensions>

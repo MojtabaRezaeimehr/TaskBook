@@ -123,6 +123,7 @@ begin
   sQry := 'INSERT INTO [dbo].[tblDays] ' + #10 + '           ([working_date] ' + #10 + '           ,[started_at] ' + #10 + '           ,[finished_at] ' + #10 + '           ,[descriptions] ' + #10 + '           ,[person_id]) ' + #10 + 'SELECT GETDATE(),GETDATE(),NULL,NULL,' + QuotedStr(sUserId);
   DataModule1.ExecuteSqlCommand(sQry);
   RefreshGrid;
+  qryDays.Last;
 end;
 
 procedure TfMain.RefreshGrid;
@@ -327,6 +328,7 @@ end;
 procedure TfMain.FormShow(Sender: TObject);
 begin
   RefreshGrid;
+  qryDays.Last;
 end;
 
 procedure TfMain.qryDaysAfterScroll(DataSet: TDataSet);

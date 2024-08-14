@@ -7,7 +7,8 @@ uses
   uMain in 'uMain.pas' {fMain},
   uDataModule in 'uDataModule.pas' {DataModule1: TDataModule},
   uTasks in 'uTasks.pas' {fTasks},
-  uDaySelector in 'uDaySelector.pas' {fDaysSelector};
+  uDaySelector in 'uDaySelector.pas' {fDaysSelector},
+  uTasksSelector in 'uTasksSelector.pas' {fTasksSelector};
 
 {$R *.res}
 

@@ -24,8 +24,6 @@ object fMain: TfMain
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitLeft = 161
-    ExplicitWidth = 489
     object rzclcksts1: TRzClockStatus
       AlignWithMargins = True
       Left = 3
@@ -60,7 +58,6 @@ object fMain: TfMain
       Height = 144
       Align = alBottom
       TabOrder = 1
-      ExplicitWidth = 489
       object lblDescriptions: TLabel
         Left = 1
         Top = 1
@@ -85,7 +82,6 @@ object fMain: TfMain
         DataSource = dsDays
         TabOrder = 0
         OnDblClick = dbmmodescriptionsDblClick
-        ExplicitWidth = 467
       end
       object pnlbtns: TPanel
         Left = 1
@@ -94,7 +90,6 @@ object fMain: TfMain
         Height = 41
         Align = alBottom
         TabOrder = 1
-        ExplicitWidth = 487
         object grdpnl1: TGridPanel
           Left = 1
           Top = 1
@@ -132,7 +127,6 @@ object fMain: TfMain
               Value = 100.000000000000000000
             end>
           TabOrder = 0
-          ExplicitWidth = 485
           object btnEdit: TButton
             AlignWithMargins = True
             Left = 4
@@ -142,7 +136,6 @@ object fMain: TfMain
             Action = dtstdt
             Align = alClient
             TabOrder = 0
-            ExplicitWidth = 155
           end
           object btnCancel: TButton
             AlignWithMargins = True
@@ -153,8 +146,6 @@ object fMain: TfMain
             Action = dtstcncl
             Align = alClient
             TabOrder = 1
-            ExplicitLeft = 165
-            ExplicitWidth = 156
           end
           object btnPost: TButton
             AlignWithMargins = True
@@ -165,8 +156,6 @@ object fMain: TfMain
             Action = dtstpst
             Align = alClient
             TabOrder = 2
-            ExplicitLeft = 327
-            ExplicitWidth = 154
           end
         end
       end
@@ -179,7 +168,6 @@ object fMain: TfMain
       Align = alClient
       Caption = 'Time Sheet'
       TabOrder = 2
-      ExplicitLeft = 284
       object dbgrdTimeSheet: TDBGrid
         Left = 2
         Top = 17
@@ -383,7 +371,6 @@ object fMain: TfMain
           Value = 17.657633996593580000
         end>
       TabOrder = 0
-      ExplicitWidth = 161
       object btnAdd: TButton
         AlignWithMargins = True
         Left = 6
@@ -398,10 +385,6 @@ object fMain: TfMain
         Caption = 'Add Today'
         TabOrder = 0
         OnClick = btnAddClick
-        ExplicitLeft = 11
-        ExplicitTop = 11
-        ExplicitWidth = 139
-        ExplicitHeight = 55
       end
       object btnExit: TButton
         AlignWithMargins = True
@@ -417,10 +400,6 @@ object fMain: TfMain
         Caption = 'Exit'
         TabOrder = 1
         OnClick = btnExitClick
-        ExplicitLeft = 11
-        ExplicitTop = 395
-        ExplicitWidth = 139
-        ExplicitHeight = 62
       end
       object btnShowDay: TButton
         AlignWithMargins = True
@@ -436,10 +415,6 @@ object fMain: TfMain
         Caption = 'Show'
         TabOrder = 2
         OnClick = dbgrdDaysDblClick
-        ExplicitLeft = 11
-        ExplicitTop = 161
-        ExplicitWidth = 139
-        ExplicitHeight = 56
       end
       object btnFinish: TButton
         AlignWithMargins = True
@@ -455,10 +430,6 @@ object fMain: TfMain
         Caption = 'Finish Today'
         TabOrder = 3
         OnClick = btnFinishClick
-        ExplicitLeft = 11
-        ExplicitTop = 86
-        ExplicitWidth = 139
-        ExplicitHeight = 55
       end
       object btnSetTimesheetIn: TButton
         AlignWithMargins = True
@@ -471,13 +442,9 @@ object fMain: TfMain
         Margins.Right = 5
         Margins.Bottom = 5
         Align = alClient
-        Caption = 'IN'
+        Caption = 'In'
         TabOrder = 4
         OnClick = btnSetTimesheetInClick
-        ExplicitLeft = 11
-        ExplicitTop = 237
-        ExplicitWidth = 139
-        ExplicitHeight = 58
       end
       object btnTimeSheetOut: TButton
         AlignWithMargins = True
@@ -490,18 +457,13 @@ object fMain: TfMain
         Margins.Right = 5
         Margins.Bottom = 5
         Align = alClient
-        Caption = 'OUT'
+        Caption = 'Out'
         TabOrder = 5
         OnClick = btnTimeSheetOutClick
-        ExplicitLeft = 11
-        ExplicitTop = 315
-        ExplicitWidth = 139
-        ExplicitHeight = 60
       end
     end
   end
   object qryDays: TADOQuery
-    Active = True
     Connection = DataModule1.MainConnection
     CursorType = ctStatic
     AfterScroll = qryDaysAfterScroll
