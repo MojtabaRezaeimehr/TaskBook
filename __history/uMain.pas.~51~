@@ -64,6 +64,7 @@ type
     btnTimeSheetOut: TButton;
     btnDeleteTimeSheet: TButton;
     actDeleteTimeSheet: TDataSetDelete;
+    qryDaysday_name: TWideStringField;
     procedure btnExitClick(Sender: TObject);
     procedure dbgrdDaysDblClick(Sender: TObject);
     procedure btnAddClick(Sender: TObject);
@@ -122,6 +123,7 @@ begin
   sQry := 'INSERT INTO [dbo].[tblDays] ' + #10 + '           ([working_date] ' + #10 + '           ,[started_at] ' + #10 + '           ,[finished_at] ' + #10 + '           ,[descriptions] ' + #10 + '           ,[person_id]) ' + #10 + 'SELECT GETDATE(),GETDATE(),NULL,NULL,' + QuotedStr(sUserId);
   DataModule1.ExecuteSqlCommand(sQry);
   RefreshGrid;
+  qryDays.Last;
 end;
 
 procedure TfMain.RefreshGrid;
@@ -210,6 +212,8 @@ begin
   end;
   DataModule1.cmd1.Execute;
   RefreshTimeSheetGrid;
+  if qryTimeSheet.State <> dsEdit then
+    qryTimeSheet.Last;
 end;
 
 procedure TfMain.btnTimeSheetOutClick(Sender: TObject);
@@ -281,23 +285,29 @@ end;
 
 procedure TfMain.dsTimeSheetStateChange(Sender: TObject);
 begin
+  if (qryTimeSheet.Active)and (qryTimeSheet.RecordCount = 0) then
+  begin
+    dbmmoTimeSheetDescriptions.Enabled := False;
+    btnDeleteTimeSheet.Enabled := False;
+//    btnTimeSheetEdit.Enabled:=False;
+    Exit;
+  end;
   if qryTimeSheet.State = dsEdit then
   begin
     dbmmoTimeSheetDescriptions.Enabled := True;
-    
     dbmmoTimeSheetDescriptions.SetFocus;
   end
   else
   begin
     dbmmoTimeSheetDescriptions.Enabled := False;
   end;
-  if qryTimeSheet.State in [dsEdit,dsInsert] then
+  if qryTimeSheet.State in [dsEdit, dsInsert] then
   begin
-    btnDeleteTimeSheet.Enabled:=False;
+    btnDeleteTimeSheet.Enabled := False;
   end
   else
   begin
-    btnDeleteTimeSheet.Enabled:=True;
+    btnDeleteTimeSheet.Enabled := True;
   end;
 end;
 
@@ -318,6 +328,7 @@ end;
 procedure TfMain.FormShow(Sender: TObject);
 begin
   RefreshGrid;
+  qryDays.Last;
 end;
 
 procedure TfMain.qryDaysAfterScroll(DataSet: TDataSet);

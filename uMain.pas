@@ -65,6 +65,8 @@ type
     btnDeleteTimeSheet: TButton;
     actDeleteTimeSheet: TDataSetDelete;
     qryDaysday_name: TWideStringField;
+    qryDaysdiff_in_time: TStringField;
+    qryDaystotal_in_out_time: TStringField;
     procedure btnExitClick(Sender: TObject);
     procedure dbgrdDaysDblClick(Sender: TObject);
     procedure btnAddClick(Sender: TObject);
@@ -80,6 +82,8 @@ type
     procedure btnTimeSheetOutClick(Sender: TObject);
     procedure qryTimeSheetAfterScroll(DataSet: TDataSet);
     procedure btnDeleteTimeSheetClick(Sender: TObject);
+    procedure dbgrdDaysDrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
   private
     procedure RefreshGrid;
     procedure RefreshTimeSheetGrid;
@@ -262,6 +266,62 @@ begin
       ShowModal;
       Free;
     end;
+  end;
+end;
+
+procedure TfMain.dbgrdDaysDrawColumnCell(Sender: TObject; const Rect: TRect;
+  DataCol: Integer; Column: TColumn; State: TGridDrawState);
+var
+  TimeStr: string;
+  Hours, Minutes: Word;
+  TimeValue: TTime;
+  DayOfWeek: string;
+  ThresholdTime: TTime;
+begin
+  // Check if we are dealing with the 'total_in_out_time' column
+  if Column.FieldName = 'total_in_out_time' then
+  begin
+    // Retrieve the time string and day of the week from the dataset
+    TimeStr := Column.Field.AsString;
+    DayOfWeek := Column.Grid.DataSource.DataSet.FieldByName('day_name').AsString;
+
+    // Determine the threshold time based on the day of the week
+    if DayOfWeek = 'پنج‌شنبه' then  // Thursday in 'fa-IR'
+      ThresholdTime := EncodeTime(4, 0, 0, 0)  // 04:00
+    else if DayOfWeek = 'جمعه' then  // Friday in 'fa-IR'
+      ThresholdTime := EncodeTime(0, 0, 0, 0)  // 00:00
+    else
+      ThresholdTime := EncodeTime(8, 0, 0, 0); // 08:00 for other days
+
+    // Parse the time string (assumed format 'HH:mm')
+    if (Length(TimeStr) = 5) and (TimeStr[3] = ':') then
+    begin
+      Hours := StrToIntDef(Copy(TimeStr, 1, 2), 0);
+      Minutes := StrToIntDef(Copy(TimeStr, 4, 2), 0);
+      TimeValue := EncodeTime(Hours, Minutes, 0, 0);
+
+      // Apply coloring based on the threshold time
+      if DayOfWeek = 'جمعه' then  // Friday
+      begin
+        if TimeValue > ThresholdTime then
+          dbgrdDays.Canvas.Brush.Color := clLime;
+      end
+      else if TimeValue >= ThresholdTime then
+        dbgrdDays.Canvas.Brush.Color := clLime  // Greater than threshold time
+//      else if TimeValue = ThresholdTime then
+//        dbgrdDays.Canvas.Brush.Color := clGreen  // Equal to threshold time
+      else
+        dbgrdDays.Canvas.Brush.Color := clFuchsia; // Less than threshold time
+    end
+    else
+    begin
+      // Default color for any other cases (e.g., invalid format)
+      dbgrdDays.Canvas.Brush.Color := clWhite;
+    end;
+
+    // Draw the cell with the selected background color
+    dbgrdDays.Canvas.FillRect(Rect);
+    dbgrdDays.DefaultDrawColumnCell(Rect, DataCol, Column, State);
   end;
 end;
 

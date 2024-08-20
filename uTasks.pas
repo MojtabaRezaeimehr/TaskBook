@@ -148,6 +148,7 @@ begin
     end;
     Free;
   end;
+  RefreshGrid;
 end;
 
 procedure TfTasks.btnFinishClick(Sender: TObject);
