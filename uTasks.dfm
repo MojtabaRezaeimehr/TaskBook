@@ -12,19 +12,22 @@ object fTasks: TfTasks
   Font.Style = []
   Position = poOwnerFormCenter
   WindowState = wsMaximized
+  OnShow = FormShow
   TextHeight = 15
   object pnlGrid: TPanel
     Left = 0
-    Top = 0
+    Top = 41
     Width = 652
-    Height = 160
+    Height = 119
     Align = alClient
     TabOrder = 0
+    ExplicitTop = 0
+    ExplicitHeight = 160
     object dbgrdTasks: TDBGrid
       Left = 1
       Top = 1
       Width = 650
-      Height = 158
+      Height = 117
       Align = alClient
       DataSource = dsTasks
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -318,6 +321,35 @@ object fTasks: TfTasks
       TabOrder = 3
       Text = 'edtDayId'
       Visible = False
+    end
+  end
+  object pnlSearchBox: TPanel
+    Left = 0
+    Top = 0
+    Width = 652
+    Height = 41
+    Align = alTop
+    TabOrder = 3
+    ExplicitLeft = 1
+    ExplicitTop = 1
+    ExplicitWidth = 650
+    object SearchBox1: TSearchBox
+      AlignWithMargins = True
+      Left = 6
+      Top = 6
+      Width = 640
+      Height = 29
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
+      Align = alClient
+      TabOrder = 0
+      OnChange = SearchBox1Change
+      ExplicitLeft = 440
+      ExplicitTop = 16
+      ExplicitWidth = 121
+      ExplicitHeight = 23
     end
   end
   object qryTasks: TADOQuery

@@ -22,6 +22,7 @@ object fTasksSelector: TfTasksSelector
     Align = alClient
     Caption = 'Tasks List'
     TabOrder = 0
+    ExplicitWidth = 272
     object dbgrdDays: TDBGrid
       AlignWithMargins = True
       Left = 5
@@ -47,6 +48,9 @@ object fTasksSelector: TfTasksSelector
       Align = alTop
       TabOrder = 1
       OnChange = SearchBox1Change
+      ExplicitLeft = 72
+      ExplicitTop = 56
+      ExplicitWidth = 121
     end
   end
   object grdpnlBtns: TGridPanel
@@ -78,6 +82,7 @@ object fTasksSelector: TfTasksSelector
         Value = 100.000000000000000000
       end>
     TabOrder = 1
+    ExplicitWidth = 272
     object btnSelect: TButton
       AlignWithMargins = True
       Left = 4
@@ -88,6 +93,7 @@ object fTasksSelector: TfTasksSelector
       Caption = 'Select'
       ModalResult = 1
       TabOrder = 0
+      ExplicitWidth = 129
     end
     object btnCancel: TButton
       AlignWithMargins = True
@@ -99,6 +105,8 @@ object fTasksSelector: TfTasksSelector
       Caption = 'Cancel'
       ModalResult = 2
       TabOrder = 1
+      ExplicitLeft = 139
+      ExplicitWidth = 129
     end
   end
   object qryTasksSelector: TADOQuery

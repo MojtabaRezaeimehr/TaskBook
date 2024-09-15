@@ -1,4 +1,4 @@
-unit uMain;
+﻿unit uMain;
 
 interface
 
@@ -67,6 +67,7 @@ type
     qryDaysday_name: TWideStringField;
     qryDaysdiff_in_time: TStringField;
     qryDaystotal_in_out_time: TStringField;
+    btnReport: TButton;
     procedure btnExitClick(Sender: TObject);
     procedure dbgrdDaysDblClick(Sender: TObject);
     procedure btnAddClick(Sender: TObject);
@@ -84,10 +85,12 @@ type
     procedure btnDeleteTimeSheetClick(Sender: TObject);
     procedure dbgrdDaysDrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure btnReportClick(Sender: TObject);
   private
     procedure RefreshGrid;
     procedure RefreshTimeSheetGrid;
     procedure SetOutBtnEnableStatus;
+    procedure CallTaskListForm(dayId:string);
     { Private declarations }
   public
     { Public declarations }
@@ -154,6 +157,29 @@ begin
   end;
 end;
 
+procedure TfMain.CallTaskListForm(dayId:string);
+var
+  ftasks: TfTasks;
+begin
+  ftasks := TfTasks.Create(self);
+  with ftasks do
+  begin
+    with qryTasks do
+    begin
+      if dayId <> '' then
+      begin
+        SQL.Add(' AND day_id = ' + dayId);
+        fTasks.hasModifyPermition:=True;
+      end;
+      Close;
+      Open;
+    end;
+    edtDayId.Text := qryDaysid.AsString;
+    ShowModal;
+    Free;
+  end;
+end;
+
 procedure TfMain.btnDeleteTimeSheetClick(Sender: TObject);
 begin
   if MessageDlg('Are you sure you want to delete?', TMsgDlgType.mtConfirmation, [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo], 0) = mrYes then
@@ -182,6 +208,11 @@ begin
     cmd1.Execute;
   end;
   RefreshGrid;
+end;
+
+procedure TfMain.btnReportClick(Sender: TObject);
+begin
+  CallTaskListForm('');
 end;
 
 procedure TfMain.btnSetTimesheetInClick(Sender: TObject);
@@ -246,26 +277,12 @@ begin
 end;
 
 procedure TfMain.dbgrdDaysDblClick(Sender: TObject);
-var
-  ftasks: TfTasks;
 begin
   if qryDaysid.ToString = '' then
     exit
   else
   begin
-    ftasks := TfTasks.Create(self);
-    with ftasks do
-    begin
-      with qryTasks do
-      begin
-        SQL.Add(' AND day_id = ' + qryDaysid.AsString);
-        Close;
-        Open;
-      end;
-      edtDayId.Text := qryDaysid.AsString;
-      ShowModal;
-      Free;
-    end;
+    CallTaskListForm(qryDaysid.AsString);
   end;
 end;
 
@@ -284,22 +301,19 @@ begin
     // Retrieve the time string and day of the week from the dataset
     TimeStr := Column.Field.AsString;
     DayOfWeek := Column.Grid.DataSource.DataSet.FieldByName('day_name').AsString;
-
     // Determine the threshold time based on the day of the week
-    if DayOfWeek = 'پنج‌شنبه' then  // Thursday in 'fa-IR'
+    if DayOfWeek = 'پنجشنبه' then  // Thursday in 'fa-IR'
       ThresholdTime := EncodeTime(4, 0, 0, 0)  // 04:00
     else if DayOfWeek = 'جمعه' then  // Friday in 'fa-IR'
       ThresholdTime := EncodeTime(0, 0, 0, 0)  // 00:00
     else
       ThresholdTime := EncodeTime(8, 0, 0, 0); // 08:00 for other days
-
     // Parse the time string (assumed format 'HH:mm')
     if (Length(TimeStr) = 5) and (TimeStr[3] = ':') then
     begin
       Hours := StrToIntDef(Copy(TimeStr, 1, 2), 0);
       Minutes := StrToIntDef(Copy(TimeStr, 4, 2), 0);
       TimeValue := EncodeTime(Hours, Minutes, 0, 0);
-
       // Apply coloring based on the threshold time
       if DayOfWeek = 'جمعه' then  // Friday
       begin
@@ -318,7 +332,6 @@ begin
       // Default color for any other cases (e.g., invalid format)
       dbgrdDays.Canvas.Brush.Color := clWhite;
     end;
-
     // Draw the cell with the selected background color
     dbgrdDays.Canvas.FillRect(Rect);
     dbgrdDays.DefaultDrawColumnCell(Rect, DataCol, Column, State);

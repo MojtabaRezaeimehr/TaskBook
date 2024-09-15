@@ -7,7 +7,8 @@ uses
   System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB,
   Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.Menus, Data.Win.ADODB,
   Vcl.StdActns, Vcl.DBActns, System.Actions, Vcl.ActnList,
-  Vcl.PlatformDefaultStyleActnCtrls, Vcl.ActnMan, Vcl.DBCtrls, Vcl.Mask;
+  Vcl.PlatformDefaultStyleActnCtrls, Vcl.ActnMan, Vcl.DBCtrls, Vcl.Mask,
+  Vcl.WinXCtrls;
 
 type
   TfTasks = class(TForm)
@@ -24,7 +25,7 @@ type
     btnFinish: TButton;
     qryTasks: TADOQuery;
     dsTasks: TDataSource;
-    atncfldTasksid: TAutoIncField;
+    qryTaskId: TAutoIncField;
     intgrfldTasksday_id: TIntegerField;
     qryTaskstitle: TWideStringField;
     qryTasksdescription: TWideMemoField;
@@ -55,6 +56,8 @@ type
     edtDayId: TEdit;
     lblDayId: TLabel;
     btnCopy: TButton;
+    pnlSearchBox: TPanel;
+    SearchBox1: TSearchBox;
     procedure btnFinishClick(Sender: TObject);
     procedure WindowClose1Execute(Sender: TObject);
     procedure btnStartClick(Sender: TObject);
@@ -65,12 +68,17 @@ type
     procedure qryTasksBeforePost(DataSet: TDataSet);
     procedure btnCopyClick(Sender: TObject);
     procedure dbedtdue_dateDblClick(Sender: TObject);
+    procedure dbgrdTasksDblClick(Sender: TObject);
+    procedure dbedttitleDblClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure SearchBox1Change(Sender: TObject);
   private
     procedure RefreshGrid;
     procedure SetControlsEnabledStatus(enabled: Boolean);
     { Private declarations }
   public
     { Public declarations }
+    hasModifyPermition: Boolean;
   end;
 
 var
@@ -79,7 +87,7 @@ var
 implementation
 
 uses
-  uDataModule, uDaySelector;
+  uDataModule, uDaySelector, uTasksSelector;
 
 {$R *.dfm}
 
@@ -100,7 +108,7 @@ begin
       Open;
     end;
     ShowModal;
-    if ModalResult <> mrOk then
+     if ModalResult <> mrOk then
       exit;
     if qryDaysSelector.RecordCount = 0 then
       exit;
@@ -146,6 +154,7 @@ begin
     end;
     Free;
   end;
+  RefreshGrid;
 end;
 
 procedure TfTasks.btnFinishClick(Sender: TObject);
@@ -171,8 +180,8 @@ end;
 procedure TfTasks.btnStartClick(Sender: TObject);
 var
   sSqlCmd: string;
+  iTaskId: Integer;
 begin
-
   if qryTasks.RecordCount = 0 then
     exit;
   if qryTasksstarted_at.AsString <> '' then
@@ -190,7 +199,9 @@ begin
     cmd1.Parameters.ParamByName('Task_Id').Value := qryTasks.FieldByName('id').AsString;
     cmd1.Execute;
   end;
+  iTaskId:=qryTaskId.Value;
   RefreshGrid;
+  qryTasks.Locate('id',iTaskId,[]);
 end;
 
 procedure TfTasks.DatasetDelete1Execute(Sender: TObject);
@@ -208,6 +219,36 @@ begin
   dbedtdue_date.Text:=sCurrentDate;
 end;
 
+procedure TfTasks.dbedttitleDblClick(Sender: TObject);
+var
+  ftasksSelector: TfTasksSelector;
+  sDay_id, sTask_id, sCmd: string;
+begin
+ftasksSelector := TfTasksSelector.Create(self);
+  with ftasksSelector do
+  begin
+//    if qryTasksSelector.RecordCount = 0 then
+//      Exit;
+    with qryTasksSelector do
+    begin
+      Parameters.ParamByName('person_id').Value := UserId;
+      Close;
+      Open;
+    end;
+    ShowModal;
+    if ModalResult <> mrOk then
+      Exit;
+    dbedttitle.Text := qryTasksSelector.FieldByName('title').Value;
+  end;
+end;
+
+procedure TfTasks.dbgrdTasksDblClick(Sender: TObject);
+begin
+  if hasModifyPermition = False then Exit;
+  qryTasks.Edit;
+  dbmmodescription.SetFocus;
+end;
+
 procedure TfTasks.dsTasksStateChange(Sender: TObject);
 begin
   if qryTasks.State in [dsEdit, dsInsert] then
@@ -221,6 +262,14 @@ begin
 
 end;
 
+procedure TfTasks.FormShow(Sender: TObject);
+begin
+  if hasModifyPermition = False then
+  begin
+    pnlControls.Visible:=False;
+  end;
+end;
+
 procedure TfTasks.RefreshGrid;
 begin
   qryTasks.Close;
@@ -232,6 +281,31 @@ begin
   dbedttitle.Enabled := enabled;
   dbmmodescription.Enabled := enabled;
   dbedtdue_date.Enabled := enabled;
+  btnStart.Enabled := not enabled;
+  btnFinish.Enabled := not enabled;
+  btnCopy.Enabled := not enabled;
+end;
+
+procedure TfTasks.SearchBox1Change(Sender: TObject);
+var sQry,sKey: string;
+begin
+  sKey:=Trim(SearchBox1.Text);
+  sQry:= 'SELECT DISTINCT(title) ' + #10
+       + 'FROM   tblTasks AS tt ' + #10
+       + 'WHERE  tt.day_id IN (SELECT id ' + #10
+       + '                     FROM   tblDays AS td ' + #10
+       + '                     WHERE  td.person_id = :person_id) ' + #10
+       + '                     AND tt.title LIKE :skey';
+  with qryTasks do
+  begin
+    SQL.Clear;
+    sql.Text:= sQry;
+    Parameters.ParamByName('person_id').Value:= '1';
+    Parameters.ParamByName('skey').Value:= '%'+sKey+'%';
+    Close;
+    Open;
+  end;
+end;
 end;
 
 procedure TfTasks.qryTasksAfterInsert(DataSet: TDataSet);

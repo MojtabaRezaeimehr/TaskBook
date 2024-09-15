@@ -14,36 +14,36 @@ File_11=TSourceModule,'E:\Mojtaba\Programing\Delphi\ArshamTTAC\AMF_TTAC\forms&un
 File_12=TSourceModule,'E:\Mojtaba\Programing\Delphi\ArshamTTAC\AMF_TTAC\forms&units\uProduct.pas',0,1,1,1,1,0,0,,
 
 [Modules]
-Module0=E:\Mojtaba\Programing\Delphi\TaskBook\uTasksSelector.pas
+Module0=E:\Mojtaba\Programing\Delphi\TaskBook\uMain.pas
 Module1=E:\Mojtaba\Programing\Delphi\TaskBook\uDataModule.pas
-Module2=E:\Mojtaba\Programing\Delphi\TaskBook\uTasks.pas
+Module2=E:\Mojtaba\Programing\Delphi\TaskBook\uLogin.pas
 Module3=E:\Mojtaba\Programing\Delphi\TaskBook\uDaySelector.pas
-Module4=E:\Mojtaba\Programing\Delphi\TaskBook\uMain.pas
-Module5=E:\Mojtaba\Programing\Delphi\TaskBook\uLogin.pas
+Module4=E:\Mojtaba\Programing\Delphi\TaskBook\uTasks.pas
+Module5=E:\Mojtaba\Programing\Delphi\TaskBook\uTasksSelector.pas
 Count=6
 EditWindowCount=1
 
-[E:\Mojtaba\Programing\Delphi\TaskBook\uTasksSelector.pas]
+[E:\Mojtaba\Programing\Delphi\TaskBook\uMain.pas]
 ModuleType=TSourceModule
 
 [E:\Mojtaba\Programing\Delphi\TaskBook\uDataModule.pas]
 ModuleType=TSourceModule
 
-[E:\Mojtaba\Programing\Delphi\TaskBook\uTasks.pas]
+[E:\Mojtaba\Programing\Delphi\TaskBook\uLogin.pas]
 ModuleType=TSourceModule
 
 [E:\Mojtaba\Programing\Delphi\TaskBook\uDaySelector.pas]
 ModuleType=TSourceModule
 
-[E:\Mojtaba\Programing\Delphi\TaskBook\uMain.pas]
+[E:\Mojtaba\Programing\Delphi\TaskBook\uTasks.pas]
 ModuleType=TSourceModule
 
-[E:\Mojtaba\Programing\Delphi\TaskBook\uLogin.pas]
+[E:\Mojtaba\Programing\Delphi\TaskBook\uTasksSelector.pas]
 ModuleType=TSourceModule
 
 [EditWindow0]
 ViewCount=6
-CurrentEditView=E:\Mojtaba\Programing\Delphi\TaskBook\uTasksSelector.pas
+CurrentEditView=E:\Mojtaba\Programing\Delphi\TaskBook\uMain.pas
 View0=0
 View1=1
 View2=2
@@ -82,20 +82,20 @@ BottomMiddelPanelData=0000080001020200000009000000446F636B5369746530100000004772
 [View0]
 CustomEditViewType=TEditView
 Module=E:\Mojtaba\Programing\Delphi\TaskBook\uLogin.pas
-CursorX=25
-CursorY=64
-TopLine=67
+CursorX=1
+CursorY=51
+TopLine=47
 LeftCol=1
 Elisions=
 Bookmarks=
-EditViewName=Borland.FormDesignerView
+EditViewName=E:\Mojtaba\Programing\Delphi\TaskBook\uLogin.pas
 
 [View1]
 CustomEditViewType=TEditView
 Module=E:\Mojtaba\Programing\Delphi\TaskBook\uMain.pas
-CursorX=16
-CursorY=126
-TopLine=96
+CursorX=27
+CursorY=299
+TopLine=286
 LeftCol=1
 Elisions=
 Bookmarks=
@@ -115,13 +115,13 @@ EditViewName=Borland.FormDesignerView
 [View3]
 CustomEditViewType=TEditView
 Module=E:\Mojtaba\Programing\Delphi\TaskBook\uTasks.pas
-CursorX=1
-CursorY=220
-TopLine=215
+CursorX=15
+CursorY=151
+TopLine=103
 LeftCol=1
 Elisions=
 Bookmarks=
-EditViewName=Borland.FormDesignerView
+EditViewName=E:\Mojtaba\Programing\Delphi\TaskBook\uTasks.pas
 
 [View4]
 CustomEditViewType=TEditView
@@ -286,8 +286,8 @@ SplitPos=111
 
 [PropInspDesignerSelection]
 ArrangeBy=Name
-SelectedItem=Action,
-ExpandedItems=Anchors=0
+SelectedItem=Name,
+ExpandedItems=Connection=0,ExecuteOptions=0,"LiveBindings Designer=0"
 
 [frmDesignPreview]
 PercentageSizes=1
@@ -298,11 +298,11 @@ State=0
 Left=0
 Top=0
 Width=2136
-Height=5833
+Height=5156
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=2136
-ClientHeight=5833
+ClientHeight=5156
 TBDockHeight=5964
 LRDockWidth=2512
 Dockable=1
@@ -484,11 +484,11 @@ State=0
 Left=0
 Top=0
 Width=2136
-Height=5833
+Height=5156
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=2136
-ClientHeight=5833
+ClientHeight=5156
 TBDockHeight=4883
 LRDockWidth=7152
 Dockable=1
@@ -624,11 +624,11 @@ State=0
 Left=0
 Top=0
 Width=2136
-Height=5833
+Height=5156
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=2136
-ClientHeight=5833
+ClientHeight=5156
 TBDockHeight=4883
 LRDockWidth=5305
 Dockable=1

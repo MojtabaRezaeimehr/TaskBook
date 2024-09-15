@@ -2140,6 +2140,7 @@ object fMain: TfMain
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
+    ExplicitWidth = 545
     object rzclcksts1: TRzClockStatus
       AlignWithMargins = True
       Left = 3
@@ -2175,6 +2176,7 @@ object fMain: TfMain
       Height = 144
       Align = alBottom
       TabOrder = 1
+      ExplicitWidth = 545
       object lblDescriptions: TLabel
         Left = 1
         Top = 1
@@ -2199,6 +2201,7 @@ object fMain: TfMain
         DataSource = dsDays
         TabOrder = 0
         OnDblClick = dbmmodescriptionsDblClick
+        ExplicitWidth = 523
       end
       object pnlbtns: TPanel
         Left = 1
@@ -2207,6 +2210,7 @@ object fMain: TfMain
         Height = 41
         Align = alBottom
         TabOrder = 1
+        ExplicitWidth = 543
         object grdpnl1: TGridPanel
           Left = 1
           Top = 1
@@ -2244,6 +2248,7 @@ object fMain: TfMain
               Value = 100.000000000000000000
             end>
           TabOrder = 0
+          ExplicitWidth = 541
           object btnEdit: TButton
             AlignWithMargins = True
             Left = 4
@@ -2253,6 +2258,7 @@ object fMain: TfMain
             Action = dtstdt
             Align = alClient
             TabOrder = 0
+            ExplicitWidth = 174
           end
           object btnCancel: TButton
             AlignWithMargins = True
@@ -2263,6 +2269,8 @@ object fMain: TfMain
             Action = dtstcncl
             Align = alClient
             TabOrder = 1
+            ExplicitLeft = 184
+            ExplicitWidth = 174
           end
           object btnPost: TButton
             AlignWithMargins = True
@@ -2273,6 +2281,8 @@ object fMain: TfMain
             Action = dtstpst
             Align = alClient
             TabOrder = 2
+            ExplicitLeft = 364
+            ExplicitWidth = 173
           end
         end
       end
@@ -2285,6 +2295,8 @@ object fMain: TfMain
       Align = alClient
       Caption = 'Time Sheet'
       TabOrder = 2
+      ExplicitLeft = 340
+      ExplicitWidth = 205
       object dbgrdTimeSheet: TDBGrid
         Left = 2
         Top = 17
@@ -2308,6 +2320,7 @@ object fMain: TfMain
         Align = alBottom
         Caption = 'discriptions'
         TabOrder = 1
+        ExplicitWidth = 201
         object dbmmoTimeSheetDescriptions: TDBMemo
           AlignWithMargins = True
           Left = 5
@@ -2318,6 +2331,7 @@ object fMain: TfMain
           DataField = 'descriptions'
           DataSource = dsTimeSheet
           TabOrder = 0
+          ExplicitWidth = 191
         end
       end
       object pnlbtnstimesheet: TPanel
@@ -2327,6 +2341,7 @@ object fMain: TfMain
         Height = 41
         Align = alBottom
         TabOrder = 2
+        ExplicitWidth = 201
         object grdpnl11: TGridPanel
           Left = 1
           Top = 1
@@ -2372,6 +2387,7 @@ object fMain: TfMain
               Value = 100.000000000000000000
             end>
           TabOrder = 0
+          ExplicitWidth = 199
           object btnTimeSheetEdit: TButton
             AlignWithMargins = True
             Left = 4
@@ -2381,6 +2397,7 @@ object fMain: TfMain
             Action = actEditTimeSheet
             Align = alClient
             TabOrder = 0
+            ExplicitWidth = 45
           end
           object btnTimeSheetCancel: TButton
             AlignWithMargins = True
@@ -2391,6 +2408,8 @@ object fMain: TfMain
             Action = actCancelTimeSheet
             Align = alClient
             TabOrder = 1
+            ExplicitLeft = 55
+            ExplicitWidth = 43
           end
           object btnTimeSheetPost: TButton
             AlignWithMargins = True
@@ -2401,6 +2420,8 @@ object fMain: TfMain
             Action = actPostTimeSheet
             Align = alClient
             TabOrder = 2
+            ExplicitLeft = 152
+            ExplicitWidth = 43
           end
           object btnDeleteTimeSheet: TButton
             AlignWithMargins = True
@@ -2414,6 +2435,8 @@ object fMain: TfMain
             ImageIndex = 5
             TabOrder = 3
             OnClick = btnDeleteTimeSheetClick
+            ExplicitLeft = 104
+            ExplicitWidth = 42
           end
         end
       end
@@ -2446,7 +2469,7 @@ object fMain: TfMain
         item
           Column = 0
           Control = btnExit
-          Row = 6
+          Row = 5
         end
         item
           Column = 0
@@ -2461,39 +2484,31 @@ object fMain: TfMain
         item
           Column = 0
           Control = btnSetTimesheetIn
-          Row = 4
+          Row = 3
         end
         item
           Column = 0
           Control = btnTimeSheetOut
-          Row = 5
-        end
-        item
-          Column = 0
-          Control = btnReport
-          Row = 3
+          Row = 4
         end>
       RowCollection = <
         item
-          Value = 14.502564952919700000
+          Value = 16.034112942870250000
         end
         item
-          Value = 14.429493708016450000
+          Value = 16.087587839511020000
         end
         item
-          Value = 14.357043717708350000
+          Value = 16.325124379763310000
         end
         item
-          Value = 14.285008045481690000
+          Value = 16.710697176483140000
         end
         item
-          Value = 14.213285911063150000
+          Value = 17.184843664778710000
         end
         item
-          Value = 14.141856475197110000
-        end
-        item
-          Value = 14.070747189613540000
+          Value = 17.657633996593580000
         end>
       TabOrder = 0
       object btnAdd: TButton
@@ -2501,7 +2516,7 @@ object fMain: TfMain
         Left = 6
         Top = 6
         Width = 93
-        Height = 58
+        Height = 65
         Margins.Left = 5
         Margins.Top = 5
         Margins.Right = 5
@@ -2510,14 +2525,13 @@ object fMain: TfMain
         Caption = 'Add Today'
         TabOrder = 0
         OnClick = btnAddClick
-        ExplicitHeight = 65
       end
       object btnExit: TButton
         AlignWithMargins = True
         Left = 6
-        Top = 406
+        Top = 390
         Width = 93
-        Height = 56
+        Height = 72
         Margins.Left = 5
         Margins.Top = 5
         Margins.Right = 5
@@ -2526,15 +2540,13 @@ object fMain: TfMain
         Caption = 'Exit'
         TabOrder = 1
         OnClick = btnExitClick
-        ExplicitTop = 390
-        ExplicitHeight = 72
       end
       object btnShowDay: TButton
         AlignWithMargins = True
         Left = 6
-        Top = 141
+        Top = 156
         Width = 93
-        Height = 57
+        Height = 66
         Margins.Left = 5
         Margins.Top = 5
         Margins.Right = 5
@@ -2543,15 +2555,13 @@ object fMain: TfMain
         Caption = 'Show'
         TabOrder = 2
         OnClick = dbgrdDaysDblClick
-        ExplicitTop = 156
-        ExplicitHeight = 66
       end
       object btnFinish: TButton
         AlignWithMargins = True
         Left = 6
-        Top = 74
+        Top = 81
         Width = 93
-        Height = 57
+        Height = 65
         Margins.Left = 5
         Margins.Top = 5
         Margins.Right = 5
@@ -2560,15 +2570,13 @@ object fMain: TfMain
         Caption = 'Finish Today'
         TabOrder = 3
         OnClick = btnFinishClick
-        ExplicitTop = 81
-        ExplicitHeight = 65
       end
       object btnSetTimesheetIn: TButton
         AlignWithMargins = True
         Left = 6
-        Top = 274
+        Top = 232
         Width = 93
-        Height = 57
+        Height = 68
         Margins.Left = 5
         Margins.Top = 5
         Margins.Right = 5
@@ -2577,15 +2585,13 @@ object fMain: TfMain
         Caption = 'In'
         TabOrder = 4
         OnClick = btnSetTimesheetInClick
-        ExplicitTop = 232
-        ExplicitHeight = 68
       end
       object btnTimeSheetOut: TButton
         AlignWithMargins = True
         Left = 6
-        Top = 341
+        Top = 310
         Width = 93
-        Height = 55
+        Height = 70
         Margins.Left = 5
         Margins.Top = 5
         Margins.Right = 5
@@ -2594,31 +2600,11 @@ object fMain: TfMain
         Caption = 'Out'
         TabOrder = 5
         OnClick = btnTimeSheetOutClick
-        ExplicitTop = 310
-        ExplicitHeight = 70
-      end
-      object btnReport: TButton
-        AlignWithMargins = True
-        Left = 6
-        Top = 208
-        Width = 93
-        Height = 56
-        Margins.Left = 5
-        Margins.Top = 5
-        Margins.Right = 5
-        Margins.Bottom = 5
-        Align = alClient
-        Caption = 'Report'
-        TabOrder = 6
-        OnClick = btnReportClick
-        ExplicitLeft = 72
-        ExplicitTop = 232
-        ExplicitWidth = 75
-        ExplicitHeight = 25
       end
     end
   end
   object qryDays: TADOQuery
+    Active = True
     Connection = DataModule1.MainConnection
     CursorType = ctStatic
     AfterScroll = qryDaysAfterScroll

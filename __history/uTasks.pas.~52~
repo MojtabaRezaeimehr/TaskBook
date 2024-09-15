@@ -24,7 +24,7 @@ type
     btnFinish: TButton;
     qryTasks: TADOQuery;
     dsTasks: TDataSource;
-    atncfldTasksid: TAutoIncField;
+    qryTaskId: TAutoIncField;
     intgrfldTasksday_id: TIntegerField;
     qryTaskstitle: TWideStringField;
     qryTasksdescription: TWideMemoField;
@@ -65,12 +65,15 @@ type
     procedure qryTasksBeforePost(DataSet: TDataSet);
     procedure btnCopyClick(Sender: TObject);
     procedure dbedtdue_dateDblClick(Sender: TObject);
+    procedure dbgrdTasksDblClick(Sender: TObject);
+    procedure dbedttitleDblClick(Sender: TObject);
   private
     procedure RefreshGrid;
     procedure SetControlsEnabledStatus(enabled: Boolean);
     { Private declarations }
   public
     { Public declarations }
+    hasModifyPermition: Boolean;
   end;
 
 var
@@ -79,7 +82,7 @@ var
 implementation
 
 uses
-  uDataModule, uDaySelector;
+  uDataModule, uDaySelector, uTasksSelector;
 
 {$R *.dfm}
 
@@ -100,7 +103,7 @@ begin
       Open;
     end;
     ShowModal;
-    if ModalResult <> mrOk then
+     if ModalResult <> mrOk then
       exit;
     if qryDaysSelector.RecordCount = 0 then
       exit;
@@ -146,6 +149,7 @@ begin
     end;
     Free;
   end;
+  RefreshGrid;
 end;
 
 procedure TfTasks.btnFinishClick(Sender: TObject);
@@ -171,8 +175,8 @@ end;
 procedure TfTasks.btnStartClick(Sender: TObject);
 var
   sSqlCmd: string;
+  iTaskId: Integer;
 begin
-
   if qryTasks.RecordCount = 0 then
     exit;
   if qryTasksstarted_at.AsString <> '' then
@@ -190,7 +194,9 @@ begin
     cmd1.Parameters.ParamByName('Task_Id').Value := qryTasks.FieldByName('id').AsString;
     cmd1.Execute;
   end;
+  iTaskId:=qryTaskId.Value;
   RefreshGrid;
+  qryTasks.Locate('id',iTaskId,[]);
 end;
 
 procedure TfTasks.DatasetDelete1Execute(Sender: TObject);
@@ -204,6 +210,37 @@ var sQry,sCurrentDate:string;
 begin
   sQry:= 'SELECT FORMAT(GETDATE() ,''yyyy/MM/dd'' ,''fa'') AS today_fa';
   DataModule1.ExecuteSql(sQry);
+  sCurrentDate:= DataModule1.qry1.FieldByName('today_fa').Value;
+  dbedtdue_date.Text:=sCurrentDate;
+end;
+
+procedure TfTasks.dbedttitleDblClick(Sender: TObject);
+var
+  ftasksSelector: TfTasksSelector;
+  sDay_id, sTask_id, sCmd: string;
+begin
+ftasksSelector := TfTasksSelector.Create(self);
+  with ftasksSelector do
+  begin
+//    if qryTasksSelector.RecordCount = 0 then
+//      Exit;
+    with qryTasksSelector do
+    begin
+      Parameters.ParamByName('person_id').Value := UserId;
+      Close;
+      Open;
+    end;
+    ShowModal;
+    if ModalResult <> mrOk then
+      Exit;
+    dbedttitle.Text := qryTasksSelector.FieldByName('title').Value;
+  end;
+end;
+
+procedure TfTasks.dbgrdTasksDblClick(Sender: TObject);
+begin
+  qryTasks.Edit;
+  dbmmodescription.SetFocus;
 end;
 
 procedure TfTasks.dsTasksStateChange(Sender: TObject);
@@ -230,6 +267,9 @@ begin
   dbedttitle.Enabled := enabled;
   dbmmodescription.Enabled := enabled;
   dbedtdue_date.Enabled := enabled;
+  btnStart.Enabled := not enabled;
+  btnFinish.Enabled := not enabled;
+  btnCopy.Enabled := not enabled;
 end;
 
 procedure TfTasks.qryTasksAfterInsert(DataSet: TDataSet);

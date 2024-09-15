@@ -7,7 +7,8 @@ uses
   System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB,
   Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.Menus, Data.Win.ADODB,
   Vcl.StdActns, Vcl.DBActns, System.Actions, Vcl.ActnList,
-  Vcl.PlatformDefaultStyleActnCtrls, Vcl.ActnMan, Vcl.DBCtrls, Vcl.Mask;
+  Vcl.PlatformDefaultStyleActnCtrls, Vcl.ActnMan, Vcl.DBCtrls, Vcl.Mask,
+  Vcl.WinXCtrls;
 
 type
   TfTasks = class(TForm)
@@ -55,6 +56,8 @@ type
     edtDayId: TEdit;
     lblDayId: TLabel;
     btnCopy: TButton;
+    pnlSearchBox: TPanel;
+    SearchBox1: TSearchBox;
     procedure btnFinishClick(Sender: TObject);
     procedure WindowClose1Execute(Sender: TObject);
     procedure btnStartClick(Sender: TObject);
@@ -67,12 +70,15 @@ type
     procedure dbedtdue_dateDblClick(Sender: TObject);
     procedure dbgrdTasksDblClick(Sender: TObject);
     procedure dbedttitleDblClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure SearchBox1Change(Sender: TObject);
   private
     procedure RefreshGrid;
     procedure SetControlsEnabledStatus(enabled: Boolean);
     { Private declarations }
   public
     { Public declarations }
+    hasModifyPermition: Boolean;
   end;
 
 var
@@ -238,6 +244,7 @@ end;
 
 procedure TfTasks.dbgrdTasksDblClick(Sender: TObject);
 begin
+  if hasModifyPermition = False then Exit;
   qryTasks.Edit;
   dbmmodescription.SetFocus;
 end;
@@ -255,6 +262,14 @@ begin
 
 end;
 
+procedure TfTasks.FormShow(Sender: TObject);
+begin
+  if hasModifyPermition = False then
+  begin
+    pnlControls.Visible:=False;
+  end;
+end;
+
 procedure TfTasks.RefreshGrid;
 begin
   qryTasks.Close;
@@ -270,6 +285,37 @@ begin
   btnFinish.Enabled := not enabled;
   btnCopy.Enabled := not enabled;
 end;
+
+procedure TfTasks.SearchBox1Change(Sender: TObject);
+var sQry,sKey,sDayIdCondition: string;
+begin
+  if hasModifyPermition then
+  begin
+    sDayIdCondition:=' AND day_id = ' + edtDayId.Text;
+  end;
+  sKey:=Trim(SearchBox1.Text);
+  sQry:= 'SELECT [id] ' + #10
+       + '      ,[day_id] ' + #10
+       + '      ,[title] ' + #10
+       + '      ,[description] ' + #10
+       + '      ,[due_date] ' + #10
+       + '      ,[is_active] ' + #10
+       + '      ,FORMAT([created_at] ,''yyyy/MM/dd hh:mm:ss'' ,''fa'') AS created_at ' + #10
+       + '      ,FORMAT([updated_at] ,''yyyy/MM/dd hh:mm:ss'' ,''fa'') AS updated_at ' + #10
+       + '      ,FORMAT([started_at] ,'' hh:mm:ss'' ,''fa'') AS started_at ' + #10
+       + '      ,FORMAT([finished_at] ,'' hh:mm:ss'' ,''fa'') AS finished_at ' + #10
+       + 'FROM   [dbo].[tblTasks] ' + #10
+       + 'WHERE 1 = 1 '+ sDayIdCondition +' AND title LIKE :skey';
+  with qryTasks do
+  begin
+    SQL.Clear;
+    sql.Text:= sQry;
+    Parameters.ParamByName('skey').Value:= '%'+sKey+'%';
+    Close;
+    Open;
+  end;
+end;
+
 
 procedure TfTasks.qryTasksAfterInsert(DataSet: TDataSet);
 begin
