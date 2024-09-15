@@ -2507,7 +2507,7 @@ object fMain: TfMain
         Margins.Right = 5
         Margins.Bottom = 5
         Align = alClient
-        Caption = 'Go Today'
+        Caption = 'GO Today'
         TabOrder = 0
         OnClick = btnAddClick
       end

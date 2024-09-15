@@ -286,8 +286,8 @@ SplitPos=111
 
 [PropInspDesignerSelection]
 ArrangeBy=Name
-SelectedItem=Name,
-ExpandedItems=Connection=0,ExecuteOptions=0,"LiveBindings Designer=0"
+SelectedItem=Action,
+ExpandedItems=Anchors=0
 
 [frmDesignPreview]
 PercentageSizes=1

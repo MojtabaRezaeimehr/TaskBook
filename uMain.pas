@@ -91,6 +91,7 @@ type
     procedure RefreshTimeSheetGrid;
     procedure SetOutBtnEnableStatus;
     procedure CallTaskListForm(dayId:string);
+    procedure OpenLastDayTasksForm;
     { Private declarations }
   public
     { Public declarations }
@@ -117,7 +118,8 @@ begin
     ExecuteSql(sQry);
     if qry1.FieldByName('Result').AsString = 'Duplicate' then
     begin
-      MessageDlg('Today has been added before!', TMsgDlgType.mtError, [TMsgDlgBtn.mbClose], 0);
+//      MessageDlg('Today has been added before!', TMsgDlgType.mtError, [TMsgDlgBtn.mbClose], 0);
+      OpenLastDayTasksForm;
       Exit
     end;
   end;
@@ -130,7 +132,7 @@ begin
   sQry := 'INSERT INTO [dbo].[tblDays] ' + #10 + '           ([working_date] ' + #10 + '           ,[started_at] ' + #10 + '           ,[finished_at] ' + #10 + '           ,[descriptions] ' + #10 + '           ,[person_id]) ' + #10 + 'SELECT GETDATE(),GETDATE(),NULL,NULL,' + QuotedStr(sUserId);
   DataModule1.ExecuteSqlCommand(sQry);
   RefreshGrid;
-  qryDays.Last;
+  OpenLastDayTasksForm;
 end;
 
 procedure TfMain.RefreshGrid;
@@ -178,6 +180,12 @@ begin
     ShowModal;
     Free;
   end;
+end;
+
+procedure TfMain.OpenLastDayTasksForm;
+begin
+  qryDays.Last;
+  CallTaskListForm(qryDaysid.AsString);
 end;
 
 procedure TfMain.btnDeleteTimeSheetClick(Sender: TObject);
