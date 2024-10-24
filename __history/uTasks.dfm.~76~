@@ -112,6 +112,7 @@ object fTasks: TfTasks
               Value = 49.845341950729400000
             end>
           TabOrder = 0
+          ExplicitHeight = 168
           object dbComment: TDBMemo
             Left = 1
             Top = 72
@@ -121,6 +122,8 @@ object fTasks: TfTasks
             DataField = 'comment'
             DataSource = dsComments
             TabOrder = 0
+            ExplicitTop = 76
+            ExplicitHeight = 75
           end
           object dbgrdComments: TDBGrid
             Left = 1
@@ -159,6 +162,7 @@ object fTasks: TfTasks
           Font.Style = []
           ParentFont = False
           Spacing = 0
+          ExplicitTop = 17
         end
       end
     end
@@ -731,11 +735,7 @@ object fTasks: TfTasks
       
         '      ,FORMAT(tc.[updated_at] ,'#39'yyyy/MM/dd hh:mm:ss'#39' ,'#39'fa'#39') AS u' +
         'pdated_at'
-      
-        '      ,CASE WHEN LEN(tc.comment)>30 THEN  SUBSTRING(tc.comment,1' +
-        ',30) + '#39' ...'#39' ELSE tc.comment  END AS title'
       'FROM   [dbo].[tblTask_comments] tc'
-      ''
       'WHERE task_id=:task_id')
     Left = 200
     Top = 184
@@ -746,14 +746,6 @@ object fTasks: TfTasks
     object qryCommentstask_id: TIntegerField
       FieldName = 'task_id'
       Visible = False
-    end
-    object qryCommentstitle: TWideMemoField
-      DisplayLabel = 'Title'
-      DisplayWidth = 30
-      FieldName = 'title'
-      ReadOnly = True
-      BlobType = ftWideMemo
-      DisplayValue = dvFull
     end
     object qryCommentscomment: TMemoField
       DisplayLabel = 'Comment'
@@ -767,12 +759,10 @@ object fTasks: TfTasks
       Visible = False
     end
     object qryCommentscreated_at: TWideStringField
-      DisplayLabel = 'Created_at'
       FieldName = 'created_at'
       ReadOnly = True
     end
     object qryCommentsupdated_at: TWideStringField
-      DisplayLabel = 'Updated_at'
       FieldName = 'updated_at'
       ReadOnly = True
     end

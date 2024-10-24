@@ -2208,6 +2208,7 @@ object fMain: TfMain
         Height = 41
         Align = alBottom
         TabOrder = 1
+        ExplicitTop = 102
         object grdpnl1: TGridPanel
           Left = 1
           Top = 1
@@ -2286,6 +2287,7 @@ object fMain: TfMain
       Align = alClient
       Caption = 'Time Sheet'
       TabOrder = 2
+      ExplicitHeight = 298
       object dbgrdTimeSheet: TDBGrid
         Left = 2
         Top = 17
@@ -2309,6 +2311,7 @@ object fMain: TfMain
         Align = alBottom
         Caption = 'discriptions'
         TabOrder = 1
+        ExplicitTop = 150
         object dbmmoTimeSheetDescriptions: TDBMemo
           AlignWithMargins = True
           Left = 5
@@ -2328,6 +2331,7 @@ object fMain: TfMain
         Height = 41
         Align = alBottom
         TabOrder = 2
+        ExplicitTop = 255
         object grdpnl11: TGridPanel
           Left = 1
           Top = 1
@@ -2631,9 +2635,6 @@ object fMain: TfMain
         '.finished_at) % 60 AS VARCHAR), 2)'
       '    END AS diff_in_time,'
       '    CASE '
-      
-        #9#9'WHEN MAX(ts.in_time) IS NULL OR MAX(ts.out_time) IS NULL THEN ' +
-        #39'00:00'#39
       
         '        WHEN SUM(DATEDIFF(MINUTE, ts.in_time, ts.out_time)) IS N' +
         'ULL THEN '#39'00:00'#39

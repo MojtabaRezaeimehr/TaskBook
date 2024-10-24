@@ -78,7 +78,6 @@ type
     dtstpstComment: TDataSetPost;
     dtstcnclComment: TDataSetCancel;
     actComments: TActionToolBar;
-    qryCommentstitle: TWideMemoField;
     procedure btnFinishClick(Sender: TObject);
     procedure WindowClose1Execute(Sender: TObject);
     procedure btnStartClick(Sender: TObject);
@@ -344,7 +343,6 @@ begin
   begin
     Close;
     Open;
-    Last;
   end;
 end;
 

@@ -78,7 +78,6 @@ type
     dtstpstComment: TDataSetPost;
     dtstcnclComment: TDataSetCancel;
     actComments: TActionToolBar;
-    qryCommentstitle: TWideMemoField;
     procedure btnFinishClick(Sender: TObject);
     procedure WindowClose1Execute(Sender: TObject);
     procedure btnStartClick(Sender: TObject);
@@ -101,7 +100,6 @@ type
     procedure qryCommentsAfterPost(DataSet: TDataSet);
     procedure qryCommentsAfterDelete(DataSet: TDataSet);
     procedure dsCommentsStateChange(Sender: TObject);
-    procedure dbgrdCommentsDblClick(Sender: TObject);
   private
     procedure RefreshTasksGrid;
     procedure RefreshCommentsGrid;
@@ -273,11 +271,6 @@ ftasksSelector := TfTasksSelector.Create(self);
   end;
 end;
 
-procedure TfTasks.dbgrdCommentsDblClick(Sender: TObject);
-begin
-    qryComments.Edit;
-end;
-
 procedure TfTasks.dbgrdTasksDblClick(Sender: TObject);
 begin
   if hasModifyPermition = False then Exit;
@@ -344,7 +337,6 @@ begin
   begin
     Close;
     Open;
-    Last;
   end;
 end;
 
@@ -417,21 +409,10 @@ begin
 end;
 
 procedure TfTasks.qryCommentsBeforePost(DataSet: TDataSet);
-var
-sSqlCmd : string;
 begin
   qryComments.FieldByName('task_id').Value := qryTasks.FieldByName('id').Value;
-  qryComments.FieldByName('person_id').Value := UserId;
-  if qryTasks.State = dsEdit then
-  begin
-    sSqlCmd := 'UPDATE tblTask_comments SET updated_at = GETDATE() WHERE id =:Task_comment_Id ';
-    with DataModule1 do
-    begin
-      cmd1.CommandText := sSqlCmd;
-      cmd1.Parameters.ParamByName('Task_comment_Id').Value := qryComments.FieldByName('id').AsString;
-      cmd1.Execute;
-    end;
-  end
+  if qryComments.State = dsEdit then
+    qryComments.FieldByName('updated_at').Value := Now;
 end;
 
 procedure TfTasks.qryCommentsNewRecord(DataSet: TDataSet);
@@ -467,6 +448,17 @@ begin
       cmd1.Execute;
     end;
   end
+//  else if qryTasks.State = dsInsert then
+//  begin
+//    sSqlCmd := 'UPDATE tblTasks SET created_at = GETDATE() WHERE id =:Task_Id ';
+//    with DataModule1 do
+//    begin
+//      cmd1.CommandText := sSqlCmd;
+//      cmd1.Parameters.ParamByName('Task_Id').Value := qryTasks.FieldByName('id').AsString;
+//      cmd1.Execute;
+//    end;
+//    RefreshGrid;
+//  end
 end;
 
 procedure TfTasks.WindowClose1Execute(Sender: TObject);

@@ -136,6 +136,10 @@
             <Form>fTasksSelector</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="uDateTimePicker.pas">
+            <Form>fDateTimePicker</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

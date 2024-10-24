@@ -747,14 +747,6 @@ object fTasks: TfTasks
       FieldName = 'task_id'
       Visible = False
     end
-    object qryCommentstitle: TWideMemoField
-      DisplayLabel = 'Title'
-      DisplayWidth = 30
-      FieldName = 'title'
-      ReadOnly = True
-      BlobType = ftWideMemo
-      DisplayValue = dvFull
-    end
     object qryCommentscomment: TMemoField
       DisplayLabel = 'Comment'
       FieldName = 'comment'
@@ -767,12 +759,10 @@ object fTasks: TfTasks
       Visible = False
     end
     object qryCommentscreated_at: TWideStringField
-      DisplayLabel = 'Created_at'
       FieldName = 'created_at'
       ReadOnly = True
     end
     object qryCommentsupdated_at: TWideStringField
-      DisplayLabel = 'Updated_at'
       FieldName = 'updated_at'
       ReadOnly = True
     end

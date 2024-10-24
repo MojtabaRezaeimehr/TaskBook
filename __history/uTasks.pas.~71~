@@ -78,7 +78,6 @@ type
     dtstpstComment: TDataSetPost;
     dtstcnclComment: TDataSetCancel;
     actComments: TActionToolBar;
-    qryCommentstitle: TWideMemoField;
     procedure btnFinishClick(Sender: TObject);
     procedure WindowClose1Execute(Sender: TObject);
     procedure btnStartClick(Sender: TObject);
@@ -98,13 +97,8 @@ type
     procedure qryCommentsNewRecord(DataSet: TDataSet);
     procedure qryCommentsAfterInsert(DataSet: TDataSet);
     procedure qryCommentsBeforeDelete(DataSet: TDataSet);
-    procedure qryCommentsAfterPost(DataSet: TDataSet);
-    procedure qryCommentsAfterDelete(DataSet: TDataSet);
-    procedure dsCommentsStateChange(Sender: TObject);
-    procedure dbgrdCommentsDblClick(Sender: TObject);
   private
-    procedure RefreshTasksGrid;
-    procedure RefreshCommentsGrid;
+    procedure RefreshGrid;
     procedure SetControlsEnabledStatus(enabled: Boolean);
     { Private declarations }
   public
@@ -185,7 +179,7 @@ begin
     end;
     Free;
   end;
-  RefreshTasksGrid;
+  RefreshGrid;
 end;
 
 procedure TfTasks.btnFinishClick(Sender: TObject);
@@ -205,7 +199,7 @@ begin
     cmd1.Parameters.ParamByName('Task_Id').Value := qryTasks.FieldByName('id').AsString;
     cmd1.Execute;
   end;
-  RefreshTasksGrid;
+  RefreshGrid;
 end;
 
 procedure TfTasks.btnStartClick(Sender: TObject);
@@ -231,7 +225,7 @@ begin
     cmd1.Execute;
   end;
   iTaskId:=qryTaskId.Value;
-  RefreshTasksGrid;
+  RefreshGrid;
   qryTasks.Locate('id',iTaskId,[]);
 end;
 
@@ -273,28 +267,11 @@ ftasksSelector := TfTasksSelector.Create(self);
   end;
 end;
 
-procedure TfTasks.dbgrdCommentsDblClick(Sender: TObject);
-begin
-    qryComments.Edit;
-end;
-
 procedure TfTasks.dbgrdTasksDblClick(Sender: TObject);
 begin
   if hasModifyPermition = False then Exit;
   qryTasks.Edit;
   dbmmodescription.SetFocus;
-end;
-
-procedure TfTasks.dsCommentsStateChange(Sender: TObject);
-begin
-  if qryComments.State in [dsEdit, dsInsert] then
-  begin
-    dbComment.Enabled:=True;
-  end
-  else
-  begin
-    dbComment.Enabled:=False;
-  end;
 end;
 
 procedure TfTasks.dsTasksDataChange(Sender: TObject; Field: TField);
@@ -338,17 +315,7 @@ begin
   end;
 end;
 
-procedure TfTasks.RefreshCommentsGrid;
-begin
-  with qryComments do
-  begin
-    Close;
-    Open;
-    Last;
-  end;
-end;
-
-procedure TfTasks.RefreshTasksGrid;
+procedure TfTasks.RefreshGrid;
 begin
   qryTasks.Close;
   qryTasks.Open;
@@ -395,19 +362,9 @@ begin
 end;
 
 
-procedure TfTasks.qryCommentsAfterDelete(DataSet: TDataSet);
-begin
- RefreshCommentsGrid;
-end;
-
 procedure TfTasks.qryCommentsAfterInsert(DataSet: TDataSet);
 begin
   dbComment.SetFocus;
-end;
-
-procedure TfTasks.qryCommentsAfterPost(DataSet: TDataSet);
-begin
- RefreshCommentsGrid;
 end;
 
 procedure TfTasks.qryCommentsBeforeDelete(DataSet: TDataSet);
@@ -417,21 +374,10 @@ begin
 end;
 
 procedure TfTasks.qryCommentsBeforePost(DataSet: TDataSet);
-var
-sSqlCmd : string;
 begin
   qryComments.FieldByName('task_id').Value := qryTasks.FieldByName('id').Value;
-  qryComments.FieldByName('person_id').Value := UserId;
-  if qryTasks.State = dsEdit then
-  begin
-    sSqlCmd := 'UPDATE tblTask_comments SET updated_at = GETDATE() WHERE id =:Task_comment_Id ';
-    with DataModule1 do
-    begin
-      cmd1.CommandText := sSqlCmd;
-      cmd1.Parameters.ParamByName('Task_comment_Id').Value := qryComments.FieldByName('id').AsString;
-      cmd1.Execute;
-    end;
-  end
+  if qryComments.State = dsEdit then
+    qryComments.FieldByName('updated_at').Value := Now;
 end;
 
 procedure TfTasks.qryCommentsNewRecord(DataSet: TDataSet);
@@ -467,6 +413,17 @@ begin
       cmd1.Execute;
     end;
   end
+//  else if qryTasks.State = dsInsert then
+//  begin
+//    sSqlCmd := 'UPDATE tblTasks SET created_at = GETDATE() WHERE id =:Task_Id ';
+//    with DataModule1 do
+//    begin
+//      cmd1.CommandText := sSqlCmd;
+//      cmd1.Parameters.ParamByName('Task_Id').Value := qryTasks.FieldByName('id').AsString;
+//      cmd1.Execute;
+//    end;
+//    RefreshGrid;
+//  end
 end;
 
 procedure TfTasks.WindowClose1Execute(Sender: TObject);

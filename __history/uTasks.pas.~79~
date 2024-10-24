@@ -344,7 +344,6 @@ begin
   begin
     Close;
     Open;
-    Last;
   end;
 end;
 

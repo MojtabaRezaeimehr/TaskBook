@@ -344,7 +344,7 @@ begin
       // Draw the cell with the selected background color
       dbgrdDays.Canvas.FillRect(Rect);
       dbgrdDays.DefaultDrawColumnCell(Rect, DataCol, Column, State);
-    except
+    finally
       exit;
     end;
   end;

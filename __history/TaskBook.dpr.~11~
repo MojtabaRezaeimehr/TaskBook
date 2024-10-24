@@ -8,8 +8,7 @@ uses
   uDataModule in 'uDataModule.pas' {DataModule1: TDataModule},
   uTasks in 'uTasks.pas' {fTasks},
   uDaySelector in 'uDaySelector.pas' {fDaysSelector},
-  uTasksSelector in 'uTasksSelector.pas' {fTasksSelector},
-  uDateTimePicker in 'uDateTimePicker.pas' {fDateTimePicker};
+  uTasksSelector in 'uTasksSelector.pas' {fTasksSelector};
 
 {$R *.res}
 
@@ -18,7 +17,6 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TDataModule1, DataModule1);
   Application.CreateForm(TfLogin, fLogin);
-  Application.CreateForm(TfDateTimePicker, fDateTimePicker);
   fLogin.ShowModal;
 //  if fLogin.ModalResult =  then
 //  begin

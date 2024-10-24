@@ -2632,9 +2632,6 @@ object fMain: TfMain
       '    END AS diff_in_time,'
       '    CASE '
       
-        #9#9'WHEN MAX(ts.in_time) IS NULL OR MAX(ts.out_time) IS NULL THEN ' +
-        #39'00:00'#39
-      
         '        WHEN SUM(DATEDIFF(MINUTE, ts.in_time, ts.out_time)) IS N' +
         'ULL THEN '#39'00:00'#39
       

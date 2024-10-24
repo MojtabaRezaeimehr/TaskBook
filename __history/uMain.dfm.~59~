@@ -2143,7 +2143,7 @@ object fMain: TfMain
     object rzclcksts1: TRzClockStatus
       AlignWithMargins = True
       Left = 3
-      Top = 265
+      Top = 301
       Width = 575
       Align = alBottom
       ExplicitLeft = 80
@@ -2155,7 +2155,7 @@ object fMain: TfMain
       Left = 3
       Top = 3
       Width = 382
-      Height = 256
+      Height = 292
       Align = alLeft
       DataSource = dsDays
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -2170,9 +2170,9 @@ object fMain: TfMain
     end
     object pnlInput: TPanel
       Left = 0
-      Top = 288
+      Top = 324
       Width = 581
-      Height = 180
+      Height = 144
       Align = alBottom
       TabOrder = 1
       object lblDescriptions: TLabel
@@ -2190,20 +2190,19 @@ object fMain: TfMain
         Left = 11
         Top = 19
         Width = 559
-        Height = 109
+        Height = 73
         Margins.Left = 10
         Margins.Right = 10
         Margins.Bottom = 10
         Align = alClient
         DataField = 'descriptions'
         DataSource = dsDays
-        ScrollBars = ssVertical
         TabOrder = 0
         OnDblClick = dbmmodescriptionsDblClick
       end
       object pnlbtns: TPanel
         Left = 1
-        Top = 138
+        Top = 102
         Width = 579
         Height = 41
         Align = alBottom
@@ -2282,7 +2281,7 @@ object fMain: TfMain
       Left = 388
       Top = 0
       Width = 193
-      Height = 262
+      Height = 298
       Align = alClient
       Caption = 'Time Sheet'
       TabOrder = 2
@@ -2290,7 +2289,7 @@ object fMain: TfMain
         Left = 2
         Top = 17
         Width = 189
-        Height = 97
+        Height = 133
         Align = alClient
         DataSource = dsTimeSheet
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -2303,7 +2302,7 @@ object fMain: TfMain
       end
       object grpDescriptions: TGroupBox
         Left = 2
-        Top = 114
+        Top = 150
         Width = 189
         Height = 105
         Align = alBottom
@@ -2323,7 +2322,7 @@ object fMain: TfMain
       end
       object pnlbtnstimesheet: TPanel
         Left = 2
-        Top = 219
+        Top = 255
         Width = 189
         Height = 41
         Align = alBottom
@@ -2631,9 +2630,6 @@ object fMain: TfMain
         '.finished_at) % 60 AS VARCHAR), 2)'
       '    END AS diff_in_time,'
       '    CASE '
-      
-        #9#9'WHEN MAX(ts.in_time) IS NULL OR MAX(ts.out_time) IS NULL THEN ' +
-        #39'00:00'#39
       
         '        WHEN SUM(DATEDIFF(MINUTE, ts.in_time, ts.out_time)) IS N' +
         'ULL THEN '#39'00:00'#39
